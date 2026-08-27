@@ -108,16 +108,21 @@ export const ENFOQUES = [
   "Fortalecimiento y desarrollo empresarial",
 ] as const;
 
-/** oficial — los dos perfiles. Estefy, 2026-08-27; sustituyen a los cuatro anteriores. */
+/**
+ * oficial — los dos perfiles. Estefy, 2026-08-27; sustituyen a los cuatro
+ * anteriores. El texto entregado traía un emoji delante de cada título; aquí
+ * se guarda el nombre del icono, porque las convenciones de escritura de este
+ * repositorio dicen «cero emojis».
+ */
 export const BENEFICIARIOS = [
   {
-    emoji: "🌱",
+    icono: "factory",
     titulo: "Unidades productivas agroindustriales",
     detalle:
       "Personas naturales o jurídicas con negocios en marcha que transforman y agregan valor a materias primas agropecuarias.",
   },
   {
-    emoji: "🤝",
+    icono: "handshake",
     titulo: "Con vinculación a productores primarios",
     detalle:
       "La propuesta debe integrar y beneficiar directamente a un mínimo de 50 productores primarios de los territorios priorizados.",
