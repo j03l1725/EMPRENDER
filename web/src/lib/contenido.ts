@@ -32,13 +32,13 @@ export const HERO_BAJADA =
  * (generadas desde datos geográficos, no puestas a ojo; ver README).
  */
 export const PROVINCIAS = [
-  { nombre: "Esmeraldas", region: "Costa", x: 22.95, y: 8.53 },
-  { nombre: "Manabí", region: "Costa", x: 8.9, y: 43.93 },
-  { nombre: "Santo Domingo de los Tsáchilas", region: "Costa", x: 31.35, y: 29.92 },
-  { nombre: "Carchi", region: "Sierra", x: 56.8, y: 11.27 },
-  { nombre: "Imbabura", region: "Sierra", x: 49.72, y: 19.32 },
-  { nombre: "Sucumbíos", region: "Amazonía", x: 71.42, y: 23.99 },
-  { nombre: "Napo", region: "Amazonía", x: 55.13, y: 42.87 },
+  { nombre: "Esmeraldas", region: "Costa", x: 22.95, y: 8.53, foto: "/img/prov-esmeraldas.jpg" },
+  { nombre: "Manabí", region: "Costa", x: 8.9, y: 43.93, foto: "/img/prov-manabi.jpg" },
+  { nombre: "Santo Domingo de los Tsáchilas", region: "Costa", x: 31.35, y: 29.92, foto: "/img/prov-santo-domingo.jpg" },
+  { nombre: "Carchi", region: "Sierra", x: 56.8, y: 11.27, foto: "/img/prov-carchi.jpg" },
+  { nombre: "Imbabura", region: "Sierra", x: 49.72, y: 19.32, foto: "/img/prov-imbabura.jpg" },
+  { nombre: "Sucumbíos", region: "Amazonía", x: 71.42, y: 23.99, foto: "/img/prov-sucumbios.jpg" },
+  { nombre: "Napo", region: "Amazonía", x: 55.13, y: 42.87, foto: "/img/prov-napo.jpg" },
 ] as const;
 
 /** oficial — el párrafo de «qué es». Texto entregado por Estefy el 2026-08-27. */
@@ -50,7 +50,6 @@ export const QUE_ES = [
     "necesita fortalecer y cómo llevarlo a la práctica.",
   "Y damos un paso más: las unidades productivas que cumplen el proceso pueden acceder a " +
     "capital semilla para implementar su Plan de Mejora y convertirlo en resultados concretos.",
-  "Más capacidades. Mejores negocios. Más oportunidades para el territorio.",
 ];
 
 /**
@@ -109,30 +108,30 @@ export const ENFOQUES = [
   "Fortalecimiento y desarrollo empresarial",
 ] as const;
 
-/** oficial — bases § 1 (Definiciones) y § 3.3 */
+/** oficial — los dos perfiles. Estefy, 2026-08-27; sustituyen a los cuatro anteriores. */
 export const BENEFICIARIOS = [
   {
-    titulo: "Asociaciones de productores",
+    emoji: "🌱",
+    titulo: "Unidades productivas agroindustriales",
     detalle:
-      "Organizaciones económicas de productores primarios que agregan valor a la materia prima.",
-    icono: "users",
+      "Personas naturales o jurídicas con negocios en marcha que transforman y agregan valor a materias primas agropecuarias.",
   },
   {
-    titulo: "MiPymes agroindustriales",
-    detalle: "Micro, pequeñas y medianas empresas que transforman materia prima agropecuaria.",
-    icono: "building",
-  },
-  {
-    titulo: "Organizaciones de EPS",
-    detalle: "Economía Popular y Solidaria con proyectos agroindustriales de impacto rural.",
-    icono: "handshake",
-  },
-  {
-    titulo: "Personas naturales",
-    detalle: "Que lideren una unidad productiva agroindustrial con presencia en el mercado.",
-    icono: "user",
+    emoji: "🤝",
+    titulo: "Con vinculación a productores primarios",
+    detalle:
+      "La propuesta debe integrar y beneficiar directamente a un mínimo de 50 productores primarios de los territorios priorizados.",
   },
 ] as const;
+
+/** oficial — cabecera de la sección. Estefy, 2026-08-27. */
+export const TERRITORIO = {
+  titulo: "EMPRENDER está presente en 7 provincias",
+  bajada:
+    "Si tienes una unidad productiva agroindustrial que agrega valor a materias primas y " +
+    "desarrollas tu actividad en uno de los territorios priorizados, este programa es para ti.",
+  etiquetaMapa: "¿Dónde?",
+} as const;
 
 /** oficial — bases § 4.1.1. Perfiles cuya participación es deseable. */
 export const PERFILES_DESEABLES = [
@@ -142,9 +141,12 @@ export const PERFILES_DESEABLES = [
   "Personas con discapacidad o sus sustitutos registrados",
 ] as const;
 
-/** oficial — bases § 3.13 (cronograma) y § 4.1 (postulación) */
+/** oficial — bases § 3.13 (cronograma) y § 4.1 (postulación). Titular y bajada: Estefy, 2026-08-27. */
 export const CONVOCATORIA = {
-  titulo: "Primera convocatoria a fondos de capital semilla",
+  titulo: "Capital semilla para impulsar tu agronegocio",
+  bajada:
+    "Convocatoria abierta del 15 de junio al 31 de diciembre de 2026. " +
+    "Las postulaciones serán revisadas conforme vayan ingresando.",
   abre: "15 de junio de 2026",
   cierra: "31 de diciembre de 2026",
   abierta: true,
@@ -155,25 +157,25 @@ export const CONVOCATORIA = {
   urlBases: "/documentos/bases-convocatoria-emprender-2026.pdf",
 } as const;
 
-/** oficial — bases § 3.10. Las tres reglas de dinero que definen la postulación. */
+/** oficial — bases § 3.10. Las tres reglas de dinero. Redacción: Estefy, 2026-08-27. */
 export const REGLAS_DINERO = [
   {
     cifra: "USD 10.000 – 80.000",
     titulo: "Capital semilla",
     detalle:
-      "El monto depende de la capacidad de gestión de la unidad productiva, de la calidad técnica de su PMA y de la validación del equipo del proyecto.",
+      "El monto se determina según la capacidad de gestión y ejecución de la unidad productiva, la calidad técnica del PMA y la validación del equipo del proyecto.",
   },
   {
     cifra: "50 %",
-    titulo: "Va a los productores primarios",
+    titulo: "Para fortalecer a productores primarios",
     detalle:
-      "Al menos la mitad del capital semilla se destina a inversiones dirigidas a los proveedores primarios, para fortalecer su capacidad productiva y sus ingresos.",
+      "Al menos el 50 % del capital semilla se destina a inversiones estratégicas dirigidas a los productores primarios vinculados.",
   },
   {
     cifra: "30 %",
-    titulo: "Contraparte mínima",
+    titulo: "Contraparte de la unidad productiva",
     detalle:
-      "Sobre el valor total de la inversión del PMA. Puede ser en efectivo o en especie —maquinaria, equipos, vehículos, tierras, trabajo técnico—, siempre con respaldo documental.",
+      "La contraparte se calcula sobre la inversión total del PMA y puede incluir aportes en efectivo y/o especie, conforme a las Bases.",
   },
 ] as const;
 
@@ -500,35 +502,101 @@ export const CREDITOS_FOTOS = [
   },
   {
     archivo: "paso-capacitacion.jpg",
-    titulo: "Workshop for agricultural extension staff and key farmers",
-    autor: "Department of Foreign Affairs and Trade",
-    licencia: "CC BY 2.0",
-    licenciaUrl: "https://creativecommons.org/licenses/by/2.0/",
+    titulo: "Feria del Café y Cacao, Guayaquil",
+    autor: "Cancillería Ecuador",
+    licencia: "CC BY-SA 2.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
     fuente:
-      "https://commons.wikimedia.org/wiki/File:Australia_Awards_Fellow_Dr_El_Sotheary_is_facilitating_a_workshop_for_agricultural_extension_staff_and_key_farmers_in_Cambodia_(15892275431).jpg",
+      "https://commons.wikimedia.org/wiki/File:Aromas_del_Ecuador,_Feria_del_Caf%C3%A9_y_Cacao_Guayaquil_2012_(8007573454).jpg",
   },
   {
     archivo: "paso-plan.jpg",
-    titulo: "Farm Extension Worker",
-    autor: "Samuel Macharia",
+    titulo: "Cafetal en Vilcabamba, Ecuador",
+    autor: "Arabsalam",
     licencia: "CC BY-SA 4.0",
     licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    fuente: "https://commons.wikimedia.org/wiki/File:Farm_Extension_Worker.jpg",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Coffee_Vilcabamba_Ecuador_1451.jpg",
   },
   {
     archivo: "paso-capital.jpg",
-    titulo: "From the farm to your plate",
-    autor: "Ummigarba",
+    titulo: "Mercado de ganado, Otavalo",
+    autor: "Bernard Gagnon",
     licencia: "CC BY-SA 4.0",
     licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    fuente: "https://commons.wikimedia.org/wiki/File:From_the_farm_to_your_plate.jpg",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Livestock_market,_Otavalo_01.jpg",
   },
   {
     archivo: "paso-implementa.jpg",
-    titulo: "Packing Cocoa seeds",
-    autor: "Ei'eke",
+    titulo: "Café en rama, Vilcabamba, Ecuador",
+    autor: "Arabsalam",
     licencia: "CC BY-SA 4.0",
     licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    fuente: "https://commons.wikimedia.org/wiki/File:Packing_Cocoa_seeds.jpg",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Coffee_Vilcabamba_Ecuador_1461.jpg",
+  },
+  {
+    archivo: "prov-esmeraldas.jpg",
+    titulo: "TURISMO ESMERALDAS",
+    autor: "Agencia de Noticias ANDES",
+    licencia: "CC BY-SA 2.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:TURISMO_ESMERALDAS_(31678638842).jpg",
+  },
+  {
+    archivo: "prov-manabi.jpg",
+    titulo: "Canoa, Manabí, Ecuador",
+    autor: "Erik.taylor",
+    licencia: "CC BY-SA 3.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Canoa,_Manab%C3%AD,_Ecuador_north.JPG",
+  },
+  {
+    archivo: "prov-santo-domingo.jpg",
+    titulo: "Downtown El Carmen",
+    autor: "1MadGod",
+    licencia: "CC BY-SA 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Downtown_El_Carmen.jpg",
+  },
+  {
+    archivo: "prov-carchi.jpg",
+    titulo: "Vista desde Julio Andrade, Carchi",
+    autor: "Diego Delso",
+    licencia: "CC BY-SA 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Vista_desde_Julio_Andrade,_Provincia_de_Carchi,_Ecuador,_2015-07-21,_DD_41.JPG",
+  },
+  {
+    archivo: "prov-imbabura.jpg",
+    titulo: "Cubilche, Imbabura",
+    autor: "Arabsalam",
+    licencia: "CC BY-SA 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Cubilche_Ecuador_1009.jpg",
+  },
+  {
+    archivo: "prov-sucumbios.jpg",
+    titulo: "Laguna, parque nacional de Cuyabeno",
+    autor: "Le mashk",
+    licencia: "CC BY-SA 3.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Laguna,_parque_nacional_de_Cuyabeno,_Ecuador.jpg",
+  },
+  {
+    archivo: "prov-napo.jpg",
+    titulo: "Río Jatunyacu, Napo",
+    autor: "amalavida.tv",
+    licencia: "CC BY-SA 2.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Ama_la_Vida_-_Flickr_-_R%C3%ADo_Jatunyacu-_Napo_(8227375372).jpg",
   },
 ] as const;

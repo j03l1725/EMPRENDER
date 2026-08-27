@@ -1,104 +1,38 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { PASOS, PASOS_CABECERA } from "@/lib/contenido";
+import { CircularGallery } from "./ui/circular-gallery";
 
 /**
- * Los cuatro pasos del proceso, en carrusel horizontal.
+ * Los cuatro pasos, en la galería circular que gira con el scroll.
  *
- * Se pidió «tipo carrusel, a lo horizontal» a partir de una galería 3D que
- * gira con el scroll de la página. Esa no se usó, y por tres motivos que aquí
- * pesan más que el efecto:
+ * El molde es el del componente pedido: un contenedor alto con el interior
+ * `sticky`, de modo que la sección se queda quieta mientras el recorrido de
+ * scroll hace girar el carrusel. Aquí son 300vh y no 500: con cuatro tarjetas
+ * basta para dar la vuelta entera, y cada pantalla de más es scroll que el
+ * visitante tiene que gastar para pasar de sección.
  *
- *   · Secuestra el scroll —necesita 500vh de página para dar una vuelta—, lo
- *     que en un móvil de gama baja en zona rural es hostil.
- *   · Coloca las tarjetas con `translateZ`, que ensancha la ventana de
- *     composición: es la Trampa 1 de CLAUDE.md, la que ya costó una tanda.
- *   · Sin JS no se lee nada, porque todo depende de transformadas calculadas
- *     en el cliente. Es la Trampa 4.
- *
- * Este carrusel da la misma lectura —tarjetas grandes con foto, se recorren de
- * lado— con scroll nativo y ajuste por tarjeta: funciona sin JS, respeta el
- * scroll de la página y no ensancha nada. Los botones solo lo adornan; el dedo
- * y la rueda ya funcionan solos.
+ * El giro lo manda el recorrido de ESTE bloque, no el de la página entera, para
+ * que la vuelta ocurra justo mientras se está mirando.
  */
 export function Pasos() {
-  const pista = useRef<HTMLDivElement>(null);
-
-  const mover = (dir: -1 | 1) => {
-    const p = pista.current;
-    if (!p) return;
-    p.scrollBy({ left: dir * (p.clientWidth * 0.8), behavior: "smooth" });
-  };
+  const caja = useRef<HTMLElement>(null);
 
   return (
-    <section className="bg-gris py-24 md:py-28">
-      <div className="mx-auto flex max-w-7xl items-end justify-between gap-6 px-6">
-        <div>
-          <h3 className="text-3xl font-bold tracking-tight md:text-4xl">
+    <section ref={caja} className="relative bg-gris" style={{ height: "300vh" }}>
+      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden">
+        <div className="pointer-events-none absolute inset-x-0 top-20 z-20 px-6 text-center sm:top-24">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             {PASOS_CABECERA.antetitulo}
-          </h3>
-          <p className="mt-2 max-w-xl text-navy/55">{PASOS_CABECERA.bajada}</p>
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl text-navy/55">{PASOS_CABECERA.bajada}</p>
         </div>
-        <div className="hidden shrink-0 gap-2 sm:flex">
-          <button
-            onClick={() => mover(-1)}
-            aria-label="Anterior"
-            className="grid h-11 w-11 place-items-center rounded-full bg-navy/5 text-navy transition hover:bg-navy/10"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={() => mover(1)}
-            aria-label="Siguiente"
-            className="grid h-11 w-11 place-items-center rounded-full bg-navy/5 text-navy transition hover:bg-navy/10"
-          >
-            <ChevronRight size={20} />
-          </button>
+
+        {/* El padding deja sitio al titular, que va encima en `absolute`. */}
+        <div className="h-full w-full pt-40 sm:pt-32">
+          <CircularGallery items={[...PASOS]} scrollRef={caja} />
         </div>
-      </div>
-
-      <div
-        ref={pista}
-        // `contain: layout` no es decoración: sin él, el ancho del contenido de este
-        // carrusel ensancha la ventana de composición en móvil y todo lo que es
-        // `position: fixed` se coloca sobre ese ancho falso y queda fuera de pantalla.
-        // Es la Trampa 1 de CLAUDE.md. `overflow-x: auto` no basta.
-        style={{ contain: "layout" }}
-        className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] scroll-pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {PASOS.map((p, i) => (
-          <article
-            key={p.titulo}
-            className="group relative w-[19rem] shrink-0 snap-start overflow-hidden rounded-2xl bg-navy shadow-lg sm:w-[23rem]"
-          >
-            <div className="relative aspect-[16/11]">
-              <Image
-                src={p.imagen}
-                alt=""
-                fill
-                className="object-cover transition duration-500 group-hover:scale-105"
-                quality={62}
-                sizes="(max-width: 640px) 19rem, 23rem"
-              />
-              {/* El degradado sostiene el texto blanco de abajo sobre cualquier foto. */}
-              <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/45 to-transparent" />
-              <span className="absolute left-5 top-5 grid h-9 w-9 place-items-center rounded-full bg-verde text-white shadow-lg">
-                <Check size={18} strokeWidth={3} />
-              </span>
-              <span className="absolute right-5 top-5 text-sm font-bold text-white/45">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
-
-            <div className="-mt-16 relative p-6 text-white">
-              <h4 className="text-lg font-bold leading-snug">{p.titulo}</h4>
-              <p className="mt-2.5 text-sm leading-relaxed text-white/70">{p.texto}</p>
-            </div>
-          </article>
-        ))}
       </div>
     </section>
   );

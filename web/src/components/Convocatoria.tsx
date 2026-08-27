@@ -19,8 +19,7 @@ export function Convocatoria() {
               {CONVOCATORIA.titulo}
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-navy/70">
-              Desde el {CONVOCATORIA.abre} hasta el {CONVOCATORIA.cierra}. Las postulaciones se
-              revisan a medida que van ingresando, así que postular antes tiene ventaja.
+              {CONVOCATORIA.bajada}
             </p>
           </div>
         </Reveal>
