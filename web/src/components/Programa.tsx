@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Check, Users, Sprout, TrendingUp } from "lucide-react";
-import { QUE_ES, OBJETIVOS, ENFOQUES, TARJETA_PMA } from "@/lib/contenido";
+import { QUE_ES, ENFOQUES, TARJETA_PMA } from "@/lib/contenido";
 import { Reveal } from "./Reveal";
 
 /** Un icono por enfoque, en el mismo orden que ENFOQUES. */
@@ -61,23 +61,6 @@ export function Programa() {
             </div>
           </Reveal>
         </div>
-
-        {/* Objetivos específicos — textuales de la ficha oficial */}
-        <Reveal>
-          <div className="mt-28 rounded-2xl bg-gris p-10 md:p-14">
-            <h3 className="text-2xl font-bold tracking-tight">Qué hace el proyecto</h3>
-            <ul className="mt-10 grid gap-x-12 gap-y-6 md:grid-cols-2">
-              {OBJETIVOS.map((o) => (
-                <li key={o} className="flex gap-3.5">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-verde/10 text-verde">
-                    <Check size={14} strokeWidth={3} />
-                  </span>
-                  <span className="leading-relaxed text-navy/80">{o}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

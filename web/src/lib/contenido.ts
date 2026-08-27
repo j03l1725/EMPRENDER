@@ -53,15 +53,44 @@ export const QUE_ES = [
   "Más capacidades. Mejores negocios. Más oportunidades para el territorio.",
 ];
 
-/** oficial — los seis objetivos específicos, textuales de la ficha del MPCEI */
-export const OBJETIVOS = [
-  "Apoyar la implementación de convocatorias a fondos de cofinanciamiento",
-  "Implementar programas de fortalecimiento empresarial (aceleración)",
-  "Acompañar la elaboración de Planes de Mejora de Agronegocios (PMA)",
-  "Acompañar la ejecución de los PMA aprobados",
-  "Recopilar y reportar información del sistema de seguimiento",
-  "Mejorar capacidades de fortalecimiento empresarial en actores territoriales",
+/**
+ * oficial — los cuatro pasos del proceso. Estefy, 2026-08-27. Sustituyen a la
+ * lista de seis objetivos específicos de la ficha, que decía lo mismo en
+ * lenguaje de proyecto y no en el de quien va a postular.
+ *
+ * Las fotos son de Wikimedia con licencia de uso comercial; van declaradas en
+ * CREDITOS_FOTOS porque la Regla 4 obliga a atribuirlas.
+ */
+export const PASOS = [
+  {
+    titulo: "Fortalece tus capacidades empresariales",
+    texto: "Capacitación para mejorar la gestión y competitividad de tu agronegocio.",
+    imagen: "/img/paso-capacitacion.jpg",
+  },
+  {
+    titulo: "Construye tu Plan de Mejora de Agronegocios",
+    texto:
+      "Recibe asistencia técnica especializada para identificar brechas y oportunidades de crecimiento.",
+    imagen: "/img/paso-plan.jpg",
+  },
+  {
+    titulo: "Accede a capital semilla",
+    texto:
+      "Los PMA que superen el proceso de evaluación podrán acceder a cofinanciamiento para implementar inversiones estratégicas.",
+    imagen: "/img/paso-capital.jpg",
+  },
+  {
+    titulo: "Implementa tus mejoras con acompañamiento",
+    texto: "Recibe asistencia técnica durante la ejecución y seguimiento de tu PMA.",
+    imagen: "/img/paso-implementa.jpg",
+  },
 ] as const;
+
+/** oficial — encabezado de la sección de pasos. Estefy, 2026-08-27. */
+export const PASOS_CABECERA = {
+  antetitulo: "¿Cómo te impulsa EMPRENDER?",
+  bajada: "Un proceso de fortalecimiento para llevar tu agronegocio al siguiente nivel.",
+} as const;
 
 /**
  * oficial — la tarjeta azul sobre la foto del programa. Estefy, 2026-08-27.
@@ -468,5 +497,38 @@ export const CREDITOS_FOTOS = [
     licencia: "CC BY-SA 4.0",
     licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
     fuente: "https://commons.wikimedia.org/wiki/File:Ecuadorian_farmers.jpg",
+  },
+  {
+    archivo: "paso-capacitacion.jpg",
+    titulo: "Workshop for agricultural extension staff and key farmers",
+    autor: "Department of Foreign Affairs and Trade",
+    licencia: "CC BY 2.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by/2.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Australia_Awards_Fellow_Dr_El_Sotheary_is_facilitating_a_workshop_for_agricultural_extension_staff_and_key_farmers_in_Cambodia_(15892275431).jpg",
+  },
+  {
+    archivo: "paso-plan.jpg",
+    titulo: "Farm Extension Worker",
+    autor: "Samuel Macharia",
+    licencia: "CC BY-SA 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    fuente: "https://commons.wikimedia.org/wiki/File:Farm_Extension_Worker.jpg",
+  },
+  {
+    archivo: "paso-capital.jpg",
+    titulo: "From the farm to your plate",
+    autor: "Ummigarba",
+    licencia: "CC BY-SA 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    fuente: "https://commons.wikimedia.org/wiki/File:From_the_farm_to_your_plate.jpg",
+  },
+  {
+    archivo: "paso-implementa.jpg",
+    titulo: "Packing Cocoa seeds",
+    autor: "Ei'eke",
+    licencia: "CC BY-SA 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    fuente: "https://commons.wikimedia.org/wiki/File:Packing_Cocoa_seeds.jpg",
   },
 ] as const;

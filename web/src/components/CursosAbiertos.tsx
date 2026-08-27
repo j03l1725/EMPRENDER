@@ -59,7 +59,7 @@ export function CursosAbiertos() {
         // de revisión) se coloca sobre ese ancho falso y queda fuera de pantalla.
         // `overflow-x: auto` no basta; `layout` es el valor mínimo que lo corrige.
         style={{ contain: "layout" }}
-        className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] scroll-pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {CURSOS.map((c) => (
           <a

@@ -2,6 +2,7 @@ import { RevisionProvider } from "@/components/revision";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Programa } from "@/components/Programa";
+import { Pasos } from "@/components/Pasos";
 import { Beneficiarios } from "@/components/Beneficiarios";
 import { Convocatoria } from "@/components/Convocatoria";
 import { Requisitos } from "@/components/Requisitos";
@@ -27,6 +28,7 @@ export default function Home() {
       <main>
         <Hero />
         <Programa />
+        <Pasos />
         <Beneficiarios />
         <Convocatoria />
         <Requisitos />
