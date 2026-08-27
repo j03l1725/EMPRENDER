@@ -1,5 +1,5 @@
-import { ArrowRight, FileText, Mail, AlertTriangle } from "lucide-react";
-import { CONVOCATORIA, REGLAS_DINERO, CONDICIONES, PERFILES_DESEABLES } from "@/lib/contenido";
+import { ArrowRight, Check, FileText, Mail, AlertTriangle } from "lucide-react";
+import { CONVOCATORIA, REGLAS_DINERO, FINANCIABLE, PERFILES_DESEABLES } from "@/lib/contenido";
 import { Reveal } from "./Reveal";
 
 export function Convocatoria() {
@@ -41,7 +41,25 @@ export function Convocatoria() {
 
         {/* Cómo se postula, sin mandar a nadie a un Drive */}
         <Reveal>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {/* Izquierda: en qué se puede gastar. Derecha: cómo se pide.
+              La tarjeta de «Además de los requisitos» se retiró de aquí; su
+              contenido sigue en CONDICIONES, en contenido.ts. */}
+          <div className="mt-8 grid items-start gap-6 md:grid-cols-2">
+            <div className="rounded-2xl bg-white p-9 ring-1 ring-navy/8">
+              <h3 className="flex items-center gap-2.5 text-xl font-bold">
+                <Check size={20} strokeWidth={3} className="text-verde" />
+                Qué puedes financiar
+              </h3>
+              <ul className="mt-6 space-y-3">
+                {FINANCIABLE.map((f) => (
+                  <li key={f} className="flex gap-3 text-sm leading-relaxed text-navy/75">
+                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-verde" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div className="rounded-2xl bg-navy p-9 text-white">
               <h3 className="text-xl font-bold">Cómo se postula</h3>
               <ol className="mt-6 space-y-4 text-white/75">
@@ -99,18 +117,6 @@ export function Convocatoria() {
                   Bases completas (PDF)
                 </a>
               </div>
-            </div>
-
-            <div className="rounded-2xl border border-navy/10 p-9">
-              <h3 className="text-xl font-bold">Además de los requisitos</h3>
-              <ul className="mt-6 space-y-5">
-                {CONDICIONES.map((c) => (
-                  <li key={c.titulo}>
-                    <p className="font-semibold">{c.titulo}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-navy/65">{c.detalle}</p>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </Reveal>

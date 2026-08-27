@@ -185,6 +185,12 @@ export const REGLAS_DINERO = [
 ] as const;
 
 /** oficial — bases § 3.10 (garantías) y § 3.5 (inclusión de productores primarios) */
+/**
+ * ▲ Al 2026-08-27 esto NO se está pintando en ninguna parte. La tarjeta
+ * «Además de los requisitos» que lo mostraba se retiró de la sección de la
+ * convocatoria a petición de Estefy. El texto se conserva porque es oficial y
+ * volcarlo costó trabajo; si vuelve a hacer falta, ya está aquí.
+ */
 export const CONDICIONES = [
   {
     titulo: "Mínimo 50 productores primarios",

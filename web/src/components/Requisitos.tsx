@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Check, ExternalLink, Download, XCircle } from "lucide-react";
+import { ExternalLink, Download, XCircle } from "lucide-react";
 import {
   REQUISITOS_COMUNES,
   REQUISITOS_NATURAL,
   REQUISITOS_JURIDICA,
   CAUSALES_RECHAZO,
-  FINANCIABLE,
 } from "@/lib/contenido";
 import { Reveal } from "./Reveal";
 
@@ -103,44 +102,27 @@ export function Requisitos() {
           </ol>
         </Reveal>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          <Reveal>
-            <div className="h-full rounded-2xl bg-white p-9 ring-1 ring-navy/8">
-              <h3 className="flex items-center gap-2.5 text-lg font-bold">
-                <Check size={19} strokeWidth={3} className="text-verde" />
-                Qué puedes financiar
-              </h3>
-              <ul className="mt-6 space-y-3">
-                {FINANCIABLE.map((f) => (
-                  <li key={f} className="flex gap-3 text-sm leading-relaxed text-navy/75">
-                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-verde" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.08}>
-            <div className="h-full rounded-2xl bg-white p-9 ring-1 ring-navy/8">
-              <h3 className="flex items-center gap-2.5 text-lg font-bold">
-                <XCircle size={19} className="text-gob-red" />
-                Qué te deja fuera
-              </h3>
-              <p className="mt-2 text-sm text-navy/55">
-                Excluye automáticamente, en cualquier etapa del proceso.
-              </p>
-              <ul className="mt-6 space-y-3">
-                {CAUSALES_RECHAZO.map((c) => (
-                  <li key={c} className="flex gap-3 text-sm leading-relaxed text-navy/75">
-                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-gob-red" />
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-        </div>
+        {/* «Qué puedes financiar» se subió a la sección de la convocatoria, junto
+            a «Cómo se postula». Aquí queda sola la de exclusiones. */}
+        <Reveal>
+          <div className="mt-8 rounded-2xl bg-white p-9 ring-1 ring-navy/8">
+            <h3 className="flex items-center gap-2.5 text-lg font-bold">
+              <XCircle size={19} className="text-gob-red" />
+              Qué te deja fuera
+            </h3>
+            <p className="mt-2 text-sm text-navy/55">
+              Excluye automáticamente, en cualquier etapa del proceso.
+            </p>
+            <ul className="mt-6 grid gap-3 md:grid-cols-2 md:gap-x-10">
+              {CAUSALES_RECHAZO.map((c) => (
+                <li key={c} className="flex gap-3 text-sm leading-relaxed text-navy/75">
+                  <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-gob-red" />
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
