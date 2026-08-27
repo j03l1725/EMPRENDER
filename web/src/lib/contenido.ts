@@ -584,11 +584,15 @@ export const RECURSOS = [
  *   estas cuatro y este bloque desaparece.
  */
 /**
- * ▲ `prov-santo-domingo.jpg` NO figura aquí: la entregó Joel el 2026-08-27 y no
- * se conoce ni su autor ni su licencia. Se retiró el crédito que tenía porque
- * era el de la foto de Wikimedia a la que sustituyó, y dejarlo habría sido
- * atribuir esta imagen a alguien que no la hizo. Cuando se sepa la fuente, se
- * añade aquí; si resulta que no es de uso libre, hay que cambiarla.
+ * ▲ Cinco fotos NO figuran aquí, y es a propósito: `prov-santo-domingo.jpg` y
+ * las cuatro `paso-*.jpg`. Las entregó Joel el 2026-08-27 y no se conoce su
+ * autor ni su licencia. Se retiraron los créditos que llevaban porque eran los
+ * de las fotos de Wikimedia a las que sustituyen, y dejarlos habría sido
+ * atribuir estas imágenes a quien no las hizo.
+ *
+ * Las cuatro de los pasos parecen generadas con IA. Si lo son, conviene
+ * decidir a nivel de proyecto si una web del Ministerio las usa y si hay que
+ * declararlo. Cuando se sepa el origen, se añade aquí.
  */
 export const CREDITOS_FOTOS = [
   {
@@ -623,41 +627,6 @@ export const CREDITOS_FOTOS = [
     licencia: "CC BY-SA 4.0",
     licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
     fuente: "https://commons.wikimedia.org/wiki/File:Ecuadorian_farmers.jpg",
-  },
-  {
-    archivo: "paso-capacitacion.jpg",
-    titulo: "Banana Processing",
-    autor: "David Brossard",
-    licencia: "CC BY-SA 2.0",
-    licenciaUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
-    fuente: "https://commons.wikimedia.org/wiki/File:Banana_Processing.jpg",
-  },
-  {
-    archivo: "paso-plan.jpg",
-    titulo: "Cafetal en Vilcabamba, Ecuador",
-    autor: "Arabsalam",
-    licencia: "CC BY-SA 4.0",
-    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    fuente:
-      "https://commons.wikimedia.org/wiki/File:Coffee_Vilcabamba_Ecuador_1451.jpg",
-  },
-  {
-    archivo: "paso-capital.jpg",
-    titulo: "Mercado de ganado, Otavalo",
-    autor: "Bernard Gagnon",
-    licencia: "CC BY-SA 4.0",
-    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    fuente:
-      "https://commons.wikimedia.org/wiki/File:Livestock_market,_Otavalo_01.jpg",
-  },
-  {
-    archivo: "paso-implementa.jpg",
-    titulo: "Café en rama, Vilcabamba, Ecuador",
-    autor: "Arabsalam",
-    licencia: "CC BY-SA 4.0",
-    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    fuente:
-      "https://commons.wikimedia.org/wiki/File:Coffee_Vilcabamba_Ecuador_1461.jpg",
   },
   {
     archivo: "prov-esmeraldas.jpg",
