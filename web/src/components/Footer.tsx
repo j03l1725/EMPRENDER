@@ -15,24 +15,24 @@ export function Footer() {
         <div className="flex flex-col items-center gap-10 text-center">
           <p className="text-2xl font-extrabold tracking-tight">EMPRENDER</p>
 
-          <nav className="flex flex-wrap justify-center gap-x-10 gap-y-3">
+          <nav className="-my-2 flex flex-wrap justify-center gap-x-8 gap-y-1">
             {ENLACES.map((e) => (
               <a
                 key={e.texto}
                 href={e.href}
                 {...(e.externo ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="font-medium text-white/85 transition hover:text-white hover:underline"
+                className="px-1 py-2.5 font-medium text-white/85 transition hover:text-white hover:underline"
               >
                 {e.texto}
               </a>
             ))}
           </nav>
 
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/60">
-            <a href={`mailto:${PROGRAMA.correo}`} className="hover:text-white">
+          <div className="-my-2 flex flex-wrap justify-center gap-x-6 gap-y-0 text-sm text-white/60">
+            <a href={`mailto:${PROGRAMA.correo}`} className="px-1 py-2.5 hover:text-white">
               {PROGRAMA.correo}
             </a>
-            <a href={`mailto:${PROGRAMA.correoQuejas}`} className="hover:text-white">
+            <a href={`mailto:${PROGRAMA.correoQuejas}`} className="px-1 py-2.5 hover:text-white">
               {PROGRAMA.correoQuejas}
             </a>
           </div>
@@ -43,7 +43,7 @@ export function Footer() {
           <p className="text-center text-xs uppercase tracking-[0.14em] text-white/35">
             Créditos fotográficos
           </p>
-          <ul className="mt-3 flex flex-wrap justify-center gap-x-6 gap-y-1.5 text-xs text-white/45">
+          <ul className="mt-3 flex flex-wrap justify-center gap-x-6 gap-y-2.5 text-xs leading-relaxed text-white/45">
             {CREDITOS_FOTOS.map((c) => (
               <li key={c.archivo}>
                 <a

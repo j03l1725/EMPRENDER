@@ -26,8 +26,8 @@ export function Cronograma() {
             <Reveal key={f.n} delay={i * 0.05}>
               <li
                 className={`flex h-full flex-col bg-navy p-8 ${
-                  i === CRONOGRAMA.length - 1 && CRONOGRAMA.length % 4 === 3
-                    ? "lg:col-span-2"
+                  i === CRONOGRAMA.length - 1 && CRONOGRAMA.length % 2 === 1
+                    ? "md:col-span-2"
                     : ""
                 }`}
               >

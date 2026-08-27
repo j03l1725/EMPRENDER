@@ -23,6 +23,16 @@ html {
   scroll-padding-top: 5rem;
 }
 
+/* Red de seguridad contra desbordamientos horizontales futuros. `clip` y no `hidden`
+   porque `hidden` crearía un contenedor de scroll.
+   ▲ Esto NO arregla por sí solo el ensanchamiento que provoca un carrusel: eso se
+   corrige con `contain: layout` en el propio carrusel. Ver CursosAbiertos.tsx */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   background: #ffffff;
   color: var(--color-navy);

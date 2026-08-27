@@ -48,7 +48,7 @@ export function Programa() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 max-w-[16rem] rounded-xl bg-navy p-6 text-white shadow-2xl">
+              <div className="relative -mt-6 ml-0 max-w-[16rem] rounded-xl bg-navy p-6 text-white shadow-2xl sm:absolute sm:-bottom-6 sm:-left-6 sm:mt-0">
                 <p className="text-3xl font-bold tracking-tight">PMA</p>
                 <p className="mt-1.5 text-sm leading-snug text-white/70">
                   Cada unidad seleccionada construye su Plan de Mejora de Agronegocios

@@ -139,8 +139,8 @@ export function Convocatoria() {
         </Reveal>
 
         <Reveal>
-          <p className="mt-10 flex items-center justify-center gap-2.5 text-sm text-navy/55">
-            <Mail size={16} />
+          <p className="mt-10 text-center text-sm leading-relaxed text-navy/55">
+            <Mail size={16} className="mr-2 inline-block align-text-bottom" />
             ¿Problemas con algún enlace? Escribe a{" "}
             <a
               href={`mailto:${CONVOCATORIA.correoPostulacion}`}

@@ -80,7 +80,7 @@ export function Requisitos() {
                       href={r.enlace}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-azul hover:underline"
+                      className="-mx-2 mt-2 inline-flex items-center gap-1.5 rounded px-2 py-2 text-sm font-semibold text-azul hover:underline"
                     >
                       {r.enlaceTexto ?? "Abrir"}
                       <ExternalLink size={14} />

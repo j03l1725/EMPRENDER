@@ -35,14 +35,14 @@ export function RevisionProvider({ children }: { children: React.ReactNode }) {
       <button
         onClick={() => setOn((v) => !v)}
         title="Resalta el texto de borrador que falta confirmar · Ctrl+Shift+R"
-        className={`fixed bottom-6 right-6 z-[100] flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold shadow-lg ring-1 transition ${
+        className={`fixed bottom-5 right-5 z-[100] flex items-center gap-2 rounded-full p-3.5 text-sm font-semibold shadow-lg ring-1 transition sm:px-4 sm:py-3 ${
           on
             ? "bg-amber-400 text-amber-950 ring-amber-500"
             : "bg-white/95 text-navy ring-black/10 hover:bg-white"
         }`}
       >
         {on ? <Eye size={16} /> : <EyeOff size={16} />}
-        {on ? "Viendo borradores" : "Revisión"}
+        <span className="hidden sm:inline">{on ? "Viendo borradores" : "Revisión"}</span>
       </button>
     </Ctx.Provider>
   );

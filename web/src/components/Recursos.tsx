@@ -57,7 +57,7 @@ export function Recursos() {
         </div>
 
         <Reveal>
-          <div className="mt-16 flex flex-wrap items-center justify-between gap-6 rounded-2xl bg-verde-claro px-10 py-9">
+          <div className="mt-16 flex flex-col items-start justify-between gap-6 rounded-2xl bg-verde-claro px-7 py-9 sm:px-10 md:flex-row md:items-center">
             <div>
               <h3 className="text-2xl font-bold tracking-tight">¿Tienes dudas?</h3>
               <p className="mt-1.5 text-navy/65">
@@ -66,9 +66,9 @@ export function Recursos() {
             </div>
             <a
               href={`mailto:${PROGRAMA.correo}`}
-              className="inline-flex items-center gap-2.5 rounded-full bg-verde px-8 py-4 font-semibold text-white transition hover:bg-verde/85"
+              className="inline-flex w-full items-center justify-center gap-2.5 break-all rounded-full bg-verde px-6 py-4 text-sm font-semibold text-white transition hover:bg-verde/85 sm:w-auto sm:px-8 sm:text-base"
             >
-              <Mail size={18} />
+              <Mail size={18} className="shrink-0" />
               {PROGRAMA.correo}
             </a>
           </div>

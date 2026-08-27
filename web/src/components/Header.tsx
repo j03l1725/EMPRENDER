@@ -44,7 +44,7 @@ export function Header() {
         compacto ? "bg-navy/95 shadow-lg backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[72px] max-w-7xl items-center gap-8 px-6">
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center gap-6 px-6">
         <a href="#" className="flex items-center gap-3 text-white">
           <Tricolor />
           <span className="leading-none">
@@ -55,7 +55,7 @@ export function Header() {
           </span>
         </a>
 
-        <nav className="ml-auto hidden items-center gap-8 md:flex">
+        <nav className="ml-auto hidden items-center gap-8 lg:flex">
           {ENLACES.map((e) => (
             <a
               key={e.href}
@@ -69,13 +69,13 @@ export function Header() {
 
         <a
           href="#convocatoria"
-          className="hidden rounded-full bg-verde px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-verde/85 md:inline-block"
+          className="hidden rounded-full bg-verde px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-verde/85 lg:inline-block"
         >
           Postular
         </a>
 
         <button
-          className="ml-auto text-white md:hidden"
+          className="-mr-2 ml-auto p-2 text-white lg:hidden"
           onClick={() => setAbierto((v) => !v)}
           aria-label="Menú"
         >
@@ -84,7 +84,7 @@ export function Header() {
       </div>
 
       {abierto && (
-        <nav className="border-t border-white/10 bg-navy px-6 pb-6 pt-2 md:hidden">
+        <nav className="border-t border-white/10 bg-navy px-6 pb-6 pt-2 lg:hidden">
           {ENLACES.map((e) => (
             <a
               key={e.href}

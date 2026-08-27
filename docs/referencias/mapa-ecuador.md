@@ -45,3 +45,31 @@ El componente que lo consume es `web/src/components/MapaEcuador.tsx`.
 ▲ El script deja los valores en la salida estándar; hay que pegarlos en el componente. No se
 automatizó porque se ejecuta una vez cada mucho tiempo y automatizarlo costaría más de lo que
 ahorra.
+
+---
+
+# Nota aparte: el carrusel y el ancho de la ventana en móvil
+
+Vale la pena dejarlo escrito porque el síntoma no apunta a la causa.
+
+**Síntoma:** en cualquier teléfono, el botón de menú y el de revisión no aparecían. La página
+no se desplazaba de lado —`window.scrollX` daba 0— y el texto se veía del tamaño correcto, así
+que no parecía un problema de desbordamiento.
+
+**Causa:** el carrusel de «Cursos abiertos» tiene 1.008 px de contenido dentro de una caja con
+`overflow-x: auto`. En emulación móvil, Chrome ensancha la **ventana de composición** hasta
+abarcar ese contenido: `window.innerWidth` daba **704** en una pantalla de 375. Todo lo que es
+`position: fixed` se coloca contra ese ancho, así que el botón de menú, anclado a la derecha,
+caía en x=648 — fuera de la pantalla.
+
+**Lo que no lo arregla**, y se probó: `overflow-x: hidden` o `clip` en el propio carrusel, en su
+sección, en `body` o en `html`; `max-width: 100vw` en el carrusel.
+
+**Lo que sí:** `contain: layout` en el carrusel. Le dice al navegador que el contenido de ese
+elemento no afecta al diseño de fuera, y la ventana vuelve a 375. Se probaron todos los valores;
+`layout` es el mínimo suficiente y, a diferencia de `paint` o `content`, no recorta las sombras
+de las tarjetas.
+
+▸ **Si algún día se añade otro elemento con desplazamiento horizontal**, lleva `contain: layout`
+o reaparece el mismo fallo. La prueba está en `docs/referencias/auditar-responsive.mjs`: lo que
+hay que vigilar no es `scrollX`, es que `window.innerWidth` coincida con el ancho de la pantalla.
