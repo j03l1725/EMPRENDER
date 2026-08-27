@@ -35,20 +35,29 @@ export function Beneficiarios() {
         </div>
 
         <Reveal>
-          <div className="mt-16 flex flex-wrap items-center gap-x-3 gap-y-3 border-t border-white/10 pt-10">
-            <span className="mr-2 text-sm font-semibold uppercase tracking-[0.14em] text-white/40">
-              Solo en
-            </span>
-            {PROVINCIAS.map((p) => (
-              <span
-                key={p}
-                className="rounded-full border border-white/15 px-4 py-1.5 text-sm text-white/85"
-              >
-                {p}
-              </span>
-            ))}
+          <div className="mt-16 border-t border-white/10 pt-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/40">
+              Solo en el territorio focalizado
+            </p>
+            <div className="mt-7 grid gap-8 sm:grid-cols-3">
+              {(["Costa", "Sierra", "Amazonía"] as const).map((region) => (
+                <div key={region}>
+                  <h3 className="text-sm font-bold uppercase tracking-wide text-verde-claro">
+                    {region}
+                  </h3>
+                  <ul className="mt-3 space-y-1.5">
+                    {PROVINCIAS.filter((p) => p.region === region).map((p) => (
+                      <li key={p.nombre} className="text-white/80">
+                        {p.nombre}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
+
       </div>
     </section>
   );

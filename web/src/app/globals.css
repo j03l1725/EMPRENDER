@@ -65,3 +65,10 @@ body {
   50%      { opacity: 0.8;  transform: scale(1.12); }
 }
 .latir { animation: latir 16s ease-in-out infinite; }
+
+/* Latido de los marcadores del mapa */
+@keyframes pulso {
+  0%, 100% { r: 4.5; opacity: 0.14; }
+  50%      { r: 7;   opacity: 0.03; }
+}
+.pulso { animation: pulso 3.5s ease-in-out infinite; }

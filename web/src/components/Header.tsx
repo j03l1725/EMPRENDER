@@ -7,6 +7,7 @@ import { PROGRAMA } from "@/lib/contenido";
 const ENLACES = [
   { href: "#programa", texto: "El programa" },
   { href: "#convocatoria", texto: "Convocatoria" },
+  { href: "#requisitos", texto: "Requisitos" },
   { href: "#niveles", texto: "Formación" },
   { href: "#recursos", texto: "Recursos" },
 ];

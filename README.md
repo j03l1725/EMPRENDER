@@ -29,10 +29,16 @@ qué falta confirmar — hoy son 25 fragmentos.
 
 ## Qué hay ahora
 
-Las cinco secciones que pidió Estefy en su audio, en su orden: hero · qué es el programa ·
-convocatoria · cursos por niveles · recursos. Añadimos dos que la ficha oficial respalda y sin
-las cuales la página quedaba coja: **a quién va dirigido** y el carrusel de **cursos abiertos**
-con el molde de tarjeta del SEAL que pidió en el segundo audio.
+Las cinco secciones que pidió Estefy, en su orden: hero · qué es el programa · convocatoria ·
+cursos por niveles · recursos. Y cuatro más que las bases de la convocatoria respaldan:
+**a quién va dirigido**, **requisitos y documentos**, **cronograma** y el carrusel de
+**cursos abiertos** con el molde de tarjeta del SEAL del segundo audio.
+
+▸ **«Requisitos y documentos» resuelve un pedido concreto:** que nadie tenga que salir a un
+Google Drive a buscar un formato. Los dos formatos de carta se descargan desde la propia
+página (`web/public/documentos/`), y los certificados llevan al sistema oficial que los emite
+—SRI, IESS, SERCOP, RUM—, que es el único válido. Las bases completas también se sirven
+desde aquí, no desde Drive.
 
 ## Estructura
 
@@ -64,6 +70,10 @@ lenguaje visual; no se edita su código.
 
 **Los colores salen de `docs/referencias/paleta.md`**, que salen de contar píxeles sobre las
 capturas. Si hace falta uno nuevo, se mide y se anota ahí.
+
+**La silueta del Ecuador del hero se generó desde datos geográficos**, no se dibujó. El
+procedimiento y el script están en `docs/referencias/mapa-ecuador.md`. Los siete puntos son
+las capitales provinciales, proyectadas con la misma transformación que el contorno.
 
 ## Despliegue
 

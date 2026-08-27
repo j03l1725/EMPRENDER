@@ -1,91 +1,155 @@
-import { ArrowRight, FileText, CalendarClock } from "lucide-react";
-import { CONVOCATORIA } from "@/lib/contenido";
-import { Borrador } from "./revision";
+import { ArrowRight, FileText, Mail, AlertTriangle } from "lucide-react";
+import { CONVOCATORIA, REGLAS_DINERO, CONDICIONES, PERFILES_DESEABLES } from "@/lib/contenido";
 import { Reveal } from "./Reveal";
 
 export function Convocatoria() {
   return (
     <section id="convocatoria" className="px-6 py-28 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr]">
-          {/* Tarjeta del monto */}
-          <Reveal>
-            <div className="lg:sticky lg:top-28">
-              <p className="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-verde">
-                Convocatoria
-              </p>
-              <h2 className="text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.05] tracking-tight">
-                Capital semilla para tu agronegocio
-              </h2>
+        <Reveal>
+          <div className="max-w-3xl">
+            <p className="mb-5 flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.16em] text-verde">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-verde opacity-70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-verde" />
+              </span>
+              Convocatoria abierta
+            </p>
+            <h2 className="text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.05] tracking-tight">
+              {CONVOCATORIA.titulo}
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-navy/70">
+              Desde el {CONVOCATORIA.abre} hasta el {CONVOCATORIA.cierra}. Las postulaciones se
+              revisan a medida que van ingresando, así que postular antes tiene ventaja.
+            </p>
+          </div>
+        </Reveal>
 
-              <div className="mt-10 overflow-hidden rounded-2xl border border-navy/10">
-                <div className="bg-verde-claro px-8 py-8">
-                  <p className="text-sm font-semibold uppercase tracking-wide text-verde">
-                    Monto por unidad productiva
-                  </p>
-                  <p className="mt-3 text-[clamp(2rem,4vw,2.75rem)] font-bold leading-none tracking-tight">
-                    {CONVOCATORIA.montoMin}
-                    <span className="mx-2.5 font-normal text-verde/50">–</span>
-                    {CONVOCATORIA.montoMax}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 px-8 py-5 text-sm">
-                  <CalendarClock size={17} className="shrink-0 text-navy/40" />
-                  <span className="text-navy/70">
-                    <Borrador nota="Fechas de la convocatoria 2026 — las da Estefy">
-                      {CONVOCATORIA.estado} · cierre {CONVOCATORIA.cierre}
-                    </Borrador>
-                  </span>
-                </div>
+        {/* Las tres reglas de dinero */}
+        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+          {REGLAS_DINERO.map((r, i) => (
+            <Reveal key={r.titulo} delay={i * 0.08}>
+              <div className="h-full rounded-2xl bg-verde-claro p-9">
+                <p className="text-[clamp(1.75rem,2.8vw,2.25rem)] font-bold leading-none tracking-tight text-verde">
+                  {r.cifra}
+                </p>
+                <h3 className="mt-4 text-lg font-bold">{r.titulo}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-navy/70">{r.detalle}</p>
               </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Cómo se postula, sin mandar a nadie a un Drive */}
+        <Reveal>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl bg-navy p-9 text-white">
+              <h3 className="text-xl font-bold">Cómo se postula</h3>
+              <ol className="mt-6 space-y-4 text-white/75">
+                <li className="flex gap-3.5">
+                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold">
+                    1
+                  </span>
+                  <span className="leading-relaxed">
+                    Llena el <strong className="font-semibold text-white">formulario de postulación</strong> en línea.
+                  </span>
+                </li>
+                <li className="flex gap-3.5">
+                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold">
+                    2
+                  </span>
+                  <span className="leading-relaxed">
+                    Reúne los documentos de la lista de abajo en una carpeta digital —Drive,
+                    OneDrive— <strong className="font-semibold text-white">con acceso público</strong>.
+                  </span>
+                </li>
+                <li className="flex gap-3.5">
+                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold">
+                    3
+                  </span>
+                  <span className="leading-relaxed">
+                    Envía el enlace de esa carpeta a{" "}
+                    <a
+                      href={`mailto:${CONVOCATORIA.correoPostulacion}`}
+                      className="font-semibold text-verde-claro underline underline-offset-4"
+                    >
+                      {CONVOCATORIA.correoPostulacion}
+                    </a>
+                    .
+                  </span>
+                </li>
+              </ol>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={CONVOCATORIA.urlPostular}
+                  href={CONVOCATORIA.urlFormulario}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-verde px-8 py-4 font-semibold text-white transition hover:bg-verde/85"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-verde px-7 py-3.5 font-semibold transition hover:bg-verde/85"
                 >
-                  Postular ahora
-                  <ArrowRight size={18} className="transition group-hover:translate-x-1" />
+                  Abrir el formulario
+                  <ArrowRight size={17} className="transition group-hover:translate-x-1" />
                 </a>
                 <a
                   href={CONVOCATORIA.urlBases}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 rounded-full border border-navy/20 px-8 py-4 font-semibold transition hover:border-navy hover:bg-navy hover:text-white"
+                  className="inline-flex items-center gap-2.5 rounded-full border border-white/25 px-7 py-3.5 font-semibold transition hover:bg-white/10"
                 >
-                  <FileText size={18} />
-                  Bases de la convocatoria
+                  <FileText size={17} />
+                  Bases completas (PDF)
                 </a>
               </div>
             </div>
-          </Reveal>
 
-          {/* Pasos */}
-          <Reveal delay={0.1}>
-            <ol className="relative space-y-1">
-              {CONVOCATORIA.pasos.map((p, i) => (
-                <li key={p.n} className="relative flex gap-7 pb-12 last:pb-0">
-                  {i < CONVOCATORIA.pasos.length - 1 && (
-                    <span className="absolute left-[27px] top-14 h-[calc(100%-2.5rem)] w-px bg-navy/12" />
-                  )}
-                  <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full bg-navy text-lg font-bold text-white">
-                    {p.n}
-                  </span>
-                  <div className="pt-2.5">
-                    <h3 className="text-xl font-bold tracking-tight">{p.titulo}</h3>
-                    <p className="mt-2.5 leading-relaxed text-navy/65">
-                      <Borrador nota="Los pasos los redactamos nosotros — confirmar con Estefy">
-                        {p.detalle}
-                      </Borrador>
-                    </p>
-                  </div>
+            <div className="rounded-2xl border border-navy/10 p-9">
+              <h3 className="text-xl font-bold">Además de los requisitos</h3>
+              <ul className="mt-6 space-y-5">
+                {CONDICIONES.map((c) => (
+                  <li key={c.titulo}>
+                    <p className="font-semibold">{c.titulo}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-navy/65">{c.detalle}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Perfiles deseables */}
+        <Reveal>
+          <div className="mt-8 rounded-2xl bg-gris p-9">
+            <h3 className="text-lg font-bold">Se valora especialmente que en tu cadena de valor participen</h3>
+            <ul className="mt-5 flex flex-wrap gap-2.5">
+              {PERFILES_DESEABLES.map((p) => (
+                <li
+                  key={p}
+                  className="rounded-full border border-navy/12 bg-white px-4 py-2 text-sm text-navy/80"
+                >
+                  {p}
                 </li>
               ))}
-            </ol>
-          </Reveal>
-        </div>
+            </ul>
+            <p className="mt-5 flex items-start gap-2.5 text-sm text-navy/55">
+              <AlertTriangle size={16} className="mt-0.5 shrink-0" />
+              Los beneficiarios directos e indirectos de una cadena de valor no pueden participar
+              en más de una solicitud de cofinanciamiento.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <p className="mt-10 flex items-center justify-center gap-2.5 text-sm text-navy/55">
+            <Mail size={16} />
+            ¿Problemas con algún enlace? Escribe a{" "}
+            <a
+              href={`mailto:${CONVOCATORIA.correoPostulacion}`}
+              className="font-semibold text-verde underline underline-offset-4"
+            >
+              {CONVOCATORIA.correoPostulacion}
+            </a>
+          </p>
+        </Reveal>
       </div>
     </section>
   );
