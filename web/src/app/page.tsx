@@ -8,8 +8,8 @@ import { Convocatoria } from "@/components/Convocatoria";
 import { Requisitos } from "@/components/Requisitos";
 import { Cronograma } from "@/components/Cronograma";
 import { Niveles } from "@/components/Niveles";
-import { CursosAbiertos } from "@/components/CursosAbiertos";
 import { Recursos } from "@/components/Recursos";
+import { Cierre } from "@/components/Cierre";
 import { Footer } from "@/components/Footer";
 
 /**
@@ -20,6 +20,10 @@ import { Footer } from "@/components/Footer";
  * a quién va dirigido, requisitos y documentos, cronograma y cursos abiertos.
  * «Requisitos y documentos» es el pedido explícito de que nada obligue a salir
  * a un Google Drive. Si alguna sobra, se quita.
+ *
+ * El 2026-08-27 entraron dos más, las dos pedidas por Estefy: «El proceso», con
+ * las siete etapas, justo después de la convocatoria; y la franja de cierre, al
+ * final, que recoge los tres pasos para postular.
  */
 export default function Home() {
   return (
@@ -34,7 +38,7 @@ export default function Home() {
         <Requisitos />
         <Cronograma />
         <Niveles />
-        <CursosAbiertos />
+        <Cierre />
         <Recursos />
       </main>
       <Footer />

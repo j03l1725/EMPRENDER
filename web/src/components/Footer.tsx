@@ -38,19 +38,29 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Atribución de las fotos. CC BY y CC BY-SA la exigen; va aquí, visible. */}
-        <div className="mt-14 border-t border-white/15 pt-8">
-          <p className="text-center text-xs uppercase tracking-[0.14em] text-white/35">
+        {/*
+          Atribución de las fotos. Ocupaba un bloque entero y se pidió reducirla.
+          Se pliega en una línea, pero NO se borra: dos de las licencias son
+          CC BY-SA y todas exigen atribución, y la página es públicamente
+          alcanzable aunque lleve `noindex`. Plegada sigue cumpliendo —el texto
+          está en el HTML y a un clic—; borrada, no. Ver Regla 4.
+
+          Cuando lleguen las fotos propias del Ministerio, se borra
+          CREDITOS_FOTOS de contenido.ts y este bloque desaparece solo.
+        */}
+        <details className="group mt-12 border-t border-white/10 pt-6">
+          <summary className="cursor-pointer list-none text-center text-[11px] uppercase tracking-[0.14em] text-white/25 transition hover:text-white/50">
             Créditos fotográficos
-          </p>
-          <ul className="mt-3 flex flex-wrap justify-center gap-x-6 gap-y-2.5 text-xs leading-relaxed text-white/45">
+            <span className="ml-1.5 inline-block transition group-open:rotate-180">▾</span>
+          </summary>
+          <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11px] leading-relaxed text-white/35">
             {CREDITOS_FOTOS.map((c) => (
               <li key={c.archivo}>
                 <a
                   href={c.fuente}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white/75 hover:underline"
+                  className="hover:text-white/70 hover:underline"
                 >
                   {c.titulo}
                 </a>{" "}
@@ -59,14 +69,14 @@ export function Footer() {
                   href={c.licenciaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white/75 hover:underline"
+                  className="hover:text-white/70 hover:underline"
                 >
                   {c.licencia}
                 </a>
               </li>
             ))}
           </ul>
-        </div>
+        </details>
 
         <div className="mt-10 border-t border-white/15 pt-8 text-center text-sm text-white/55">
           <p className="mx-auto max-w-2xl leading-relaxed">

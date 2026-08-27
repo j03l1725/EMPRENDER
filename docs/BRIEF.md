@@ -120,12 +120,19 @@ hay nada escrito — cuesta poco hoy y mucho en dos semanas.
 
 ## 6. Lo que falta — preguntas para Estefy
 
-1. **Los textos.** Todos. Hero, «qué es el programa», descripción de cada nivel, recursos.
+1. ~~**Los textos.**~~ **Casi resuelta el 2026-08-27.** Estefy entregó, en tres tandas por
+   WhatsApp, el hero, «qué es el programa», los pasos, la convocatoria, las siete etapas del
+   proceso, los requisitos, la formación y la franja de cierre. Los borradores bajaron de 20 a
+   4. **Solo faltan** los dos videos de `RECURSOS` —pregunta 6— y la duración, los módulos y la
+   URL de cada nivel —pregunta 3—.
 2. ~~**La convocatoria vigente.**~~ **Resuelta el 2026-08-26.** Abierta del 15/06/2026 al
    31/12/2026; bases en PDF dentro del repositorio; formulario en `formshare.alliance.cgiar.org`.
    Lo que queda por confirmar es si habrá otra convocatoria después y con qué fechas.
-3. **Los tres niveles.** ¿Cómo se llaman, qué contiene cada uno, y a qué URL exacta del SEAL
-   entra cada uno? ¿Hay prerrequisito entre niveles?
+3. ~~**Los tres niveles.**~~ **Parcialmente resuelta el 2026-08-27.** Estefy confirmó el
+   nombre y el contenido de los tres —«Fundamentos del agronegocio», «Gestión y formalización»
+   y «Plan de Mejora de Agronegocios»—, que eran invención nuestra y ahora son oficiales.
+   **Sigue abierto:** a qué URL exacta del SEAL entra cada uno, cuánto dura, cuántos módulos
+   tiene y si hay prerrequisito entre niveles. Esos cuatro datos siguen en borrador.
 4. **Los logos a la derecha.** En el SEAL van a la izquierda. ¿Es a propósito o se refería a
    los botones de sesión?
 5. **De quién es la página.** ¿Marca MPCEI, marca MAG, o las dos? Es lo que decide la cabecera.

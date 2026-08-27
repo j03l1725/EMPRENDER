@@ -138,14 +138,6 @@ export const TERRITORIO = {
   etiquetaMapa: "¿Dónde?",
 } as const;
 
-/** oficial — bases § 4.1.1. Perfiles cuya participación es deseable. */
-export const PERFILES_DESEABLES = [
-  "Mujeres que realicen actividades productivas",
-  "Jóvenes entre 18 y 29 años",
-  "Personas de pueblos y nacionalidades indígenas del Ecuador",
-  "Personas con discapacidad o sus sustitutos registrados",
-] as const;
-
 /** oficial — bases § 3.13 (cronograma) y § 4.1 (postulación). Titular y bajada: Estefy, 2026-08-27. */
 export const CONVOCATORIA = {
   titulo: "Capital semilla para impulsar tu agronegocio",
@@ -214,6 +206,45 @@ export const CONDICIONES = [
   },
 ] as const;
 
+/**
+ * oficial — las siete etapas del proceso. Estefy, 2026-08-27.
+ *
+ * Sustituyen a la tarjeta «Cómo se postula» que estaba dentro de la sección de
+ * la convocatoria; sus tres pasos de postulación se movieron al cierre de la
+ * página, que es donde ella los pidió.
+ */
+export const PROCESO_CABECERA = {
+  antetitulo: "El proceso",
+  titulo: "Tu camino en EMPRENDER",
+  bajada:
+    "Postular es el primer paso. Te acompañamos en el fortalecimiento de tu agronegocio " +
+    "hasta la implementación de tu Plan de Mejora.",
+} as const;
+
+export const PROCESO = [
+  { titulo: "Postulación", texto: "Presenta tu unidad productiva y documentación." },
+  { titulo: "Selección", texto: "Verificamos el cumplimiento de los requisitos." },
+  { titulo: "Fortalecimiento", texto: "Capacitación y asistencia técnica especializada." },
+  {
+    titulo: "PMA + PGSAC",
+    texto: "Construye tus planes y define las inversiones que necesitas.",
+  },
+  { titulo: "Evaluación", texto: "Se evalúa la viabilidad de los planes presentados." },
+  {
+    titulo: "Cofinanciamiento",
+    texto: "Los planes seleccionados avanzan a la formalización y asignación de recursos.",
+  },
+  {
+    titulo: "Implementación",
+    texto: "Ejecuta las mejoras aprobadas con acompañamiento y seguimiento.",
+  },
+] as const;
+
+/** oficial — la nota al pie del proceso. Estefy, 2026-08-27. */
+export const PROCESO_NOTA =
+  "La capacitación, asistencia técnica y formulación del PMA y PGSAC son etapas previas " +
+  "habilitantes para acceder al cofinanciamiento del Fondo EMPRENDER.";
+
 /** oficial — bases § 3.13, resumido a las fases que le importan al postulante */
 export const CRONOGRAMA = [
   {
@@ -276,6 +307,16 @@ type Requisito = {
   enlaceTexto?: string;
   formato?: string;
 };
+
+/** oficial — cabecera de la sección de requisitos. Estefy, 2026-08-27. */
+export const REQUISITOS_CABECERA = {
+  antetitulo: "Requisitos y documentos",
+  titulo: "Prepárate para postular",
+  bajada:
+    "Revisa los requisitos según tu tipo de postulante y reúne la documentación necesaria " +
+    "para completar tu postulación. Aquí encontrarás los formatos y orientaciones para " +
+    "preparar tu solicitud.",
+} as const;
 
 export const REQUISITOS_COMUNES: Requisito[] = [
   {
@@ -365,16 +406,25 @@ export const REQUISITOS_JURIDICA: Requisito[] = [
   },
 ];
 
-/** oficial — bases § 3.6, las causales que más descalifican */
-export const CAUSALES_RECHAZO = [
-  "No tener el establecimiento matriz y la producción en las provincias focalizadas",
-  "No contar con el Acuerdo de Inclusión de al menos 50 productores primarios",
-  "Dedicarse solo a comprar y vender sin agregar valor",
-  "No presentar evidencia de ventas de los últimos 12 meses",
-  "No estar al día con el SRI, el IESS o constar como incumplido en el SERCOP",
-  "Estar recibiendo capital semilla de otra entidad pública sin haber cerrado la desinversión",
-  "Presentar documentación incompleta, con errores, incongruente o no vigente",
-] as const;
+/**
+ * oficial — la lista de verificación previa. Estefy, 2026-08-27.
+ *
+ * Sustituye a la tarjeta «Qué te deja fuera», que enumeraba siete causales de
+ * rechazo de las bases § 3.6. Ella pidió cerrar la sección con esta lista en
+ * positivo y remitir las causales completas al PDF, que es la fuente.
+ */
+export const VERIFICA_ANTES = {
+  titulo: "Antes de postular, verifica que:",
+  items: [
+    "Tu unidad productiva esté en una de las 7 provincias.",
+    "Tengas actividad productiva y ventas demostrables.",
+    "Agregues valor a materias primas.",
+    "Puedas vincular al menos 50 productores primarios.",
+    "Estés al día con las obligaciones correspondientes.",
+    "Tengas lista la documentación requerida.",
+  ],
+  enlaceTexto: "Ver todas las causales de rechazo",
+} as const;
 
 /** oficial — bases § 3.11 */
 export const FINANCIABLE = [
@@ -388,18 +438,30 @@ export const FINANCIABLE = [
   "Capacidades administrativas, comerciales, jurídicas y financieras",
 ] as const;
 
+/** oficial — cabecera de la sección de formación. Estefy, 2026-08-27. */
+export const FORMACION_CABECERA = {
+  antetitulo: "Formación",
+  titulo: "Fortalece tus capacidades para hacer crecer tu agronegocio",
+  bajada:
+    "Accede a formación especializada para mejorar la gestión de tu unidad productiva y " +
+    "prepararte para construir e implementar tu Plan de Mejora de Agronegocios.",
+  subtitulo: "Una ruta de formación en tres niveles",
+} as const;
+
 /**
- * borrador — los tres niveles.
- * Estefy dijo «son tres niveles» y nada más. Nombres, contenido y URL de destino
- * son invención nuestra hasta que ella los confirme. Ojo: las bases hablan de
- * «al menos 3 procesos de capacitación» (§ 3.13, fase 5) — puede que sean estos.
+ * oficial en nombre y contenido — Estefy, 2026-08-27. Confirma los tres niveles
+ * que hasta entonces eran invención nuestra.
+ *
+ * Siguen en borrador la duración, el número de módulos y la URL de destino: ella
+ * no los dio. Ojo: las bases hablan de «al menos 3 procesos de capacitación»
+ * (§ 3.13, fase 5) — puede que sean estos.
  */
 export const NIVELES = [
   {
     n: 1,
     nombre: "Fundamentos del agronegocio",
     detalle:
-      "Para quien recién empieza. Qué es un agronegocio, cómo se organiza una unidad productiva y qué exige el mercado.",
+      "Comprende cómo funciona un agronegocio, cómo se organiza una unidad productiva y qué demanda el mercado.",
     duracion: "20 horas",
     modulos: 4,
     href: "https://capacitacion.agricultura.gob.ec/",
@@ -408,7 +470,7 @@ export const NIVELES = [
     n: 2,
     nombre: "Gestión y formalización",
     detalle:
-      "Costos, precios, calidad, asociatividad y los requisitos formales para vender a compradores grandes.",
+      "Fortalece conocimientos en costos, precios, calidad, asociatividad y requisitos para acceder a nuevos mercados.",
     duracion: "32 horas",
     modulos: 6,
     href: "https://capacitacion.agricultura.gob.ec/",
@@ -417,12 +479,26 @@ export const NIVELES = [
     n: 3,
     nombre: "Plan de Mejora de Agronegocios",
     detalle:
-      "El nivel que prepara la postulación: cómo se arma un PMA, cómo se sustenta la inversión y cómo se mide el resultado.",
+      "Aprende a estructurar tu PMA, sustentar las inversiones y definir los resultados que quieres alcanzar.",
     duracion: "40 horas",
     modulos: 8,
     href: "https://capacitacion.agricultura.gob.ec/",
   },
 ] as const;
+
+/** oficial — cabecera del carrusel de cursos. Estefy, 2026-08-27. */
+/**
+ * ▲ Al 2026-08-27 ni CURSOS_CABECERA ni CURSOS se pintan: la sección de cursos
+ * abiertos se retiró y de formación solo quedan los niveles. Se conservan
+ * porque salen del SEAL en producción y volcarlos costó trabajo.
+ */
+export const CURSOS_CABECERA = {
+  antetitulo: "Sigue aprendiendo",
+  titulo: "Explora los cursos disponibles",
+  bajada:
+    "Complementa tu formación con cursos especializados para fortalecer conocimientos y " +
+    "prácticas aplicadas al sector agroproductivo.",
+} as const;
 
 /**
  * oficial — cursos vistos en el carrusel «Cursos abiertos» del SEAL el 2026-08-26.
@@ -452,6 +528,27 @@ export const CURSOS = [
     nuevo: true,
   },
 ] as const;
+
+/**
+ * oficial — la franja de cierre. Estefy, 2026-08-27.
+ *
+ * Los tres pasos son los que estaban en la tarjeta azul «Cómo se postula», dentro
+ * de la sección de la convocatoria. Ella los pidió al final de la página, que es
+ * donde tienen sentido: cuando ya se leyó todo lo demás.
+ *
+ * El titular va tal cual lo entregó. Regla 1: no se corrige texto institucional.
+ */
+export const CIERRE = {
+  titulo: "¿Listo dar el siguiente paso?",
+  bajada: "Postula a EMPRENDER y empieza el camino para fortalecer tu agronegocio.",
+  pasos: [
+    "Completa el formulario de postulación.",
+    "Reúne los documentos requeridos en una carpeta digital con acceso público.",
+    "Envía el enlace al correo indicado en la convocatoria.",
+  ],
+  botonPrimario: "Postular ahora",
+  botonSecundario: "Descargar bases",
+} as const;
 
 /** borrador — Estefy pidió «unos dos videos: uno de Instagram y otro un video». Faltan las URL. */
 export const RECURSOS = [

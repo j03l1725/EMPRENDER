@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink, Download, XCircle } from "lucide-react";
+import { ExternalLink, Download, Check, ArrowRight } from "lucide-react";
 import {
+  REQUISITOS_CABECERA,
   REQUISITOS_COMUNES,
   REQUISITOS_NATURAL,
   REQUISITOS_JURIDICA,
-  CAUSALES_RECHAZO,
+  VERIFICA_ANTES,
+  CONVOCATORIA,
 } from "@/lib/contenido";
 import { Reveal } from "./Reveal";
 
@@ -30,14 +32,13 @@ export function Requisitos() {
         <Reveal>
           <div className="max-w-3xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-verde">
-              Requisitos y documentos
+              {REQUISITOS_CABECERA.antetitulo}
             </p>
             <h2 className="text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.05] tracking-tight">
-              Todo lo que necesitas, aquí
+              {REQUISITOS_CABECERA.titulo}
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-navy/70">
-              Los formatos de carta se descargan desde esta página. Los certificados se obtienen
-              en el sistema oficial de cada institución, que es el único que los emite válidamente.
+              {REQUISITOS_CABECERA.bajada}
             </p>
           </div>
         </Reveal>
@@ -102,25 +103,36 @@ export function Requisitos() {
           </ol>
         </Reveal>
 
-        {/* «Qué puedes financiar» se subió a la sección de la convocatoria, junto
-            a «Cómo se postula». Aquí queda sola la de exclusiones. */}
+        {/* Cierra la sección. Antes había aquí una tarjeta roja, «Qué te deja
+            fuera», con siete causales de rechazo de las bases § 3.6. Estefy la
+            cambió el 2026-08-27 por esta lista en positivo; las causales
+            completas se consultan en el PDF, que es la fuente. */}
         <Reveal>
-          <div className="mt-8 rounded-2xl bg-white p-9 ring-1 ring-navy/8">
-            <h3 className="flex items-center gap-2.5 text-lg font-bold">
-              <XCircle size={19} className="text-gob-red" />
-              Qué te deja fuera
-            </h3>
-            <p className="mt-2 text-sm text-navy/55">
-              Excluye automáticamente, en cualquier etapa del proceso.
-            </p>
-            <ul className="mt-6 grid gap-3 md:grid-cols-2 md:gap-x-10">
-              {CAUSALES_RECHAZO.map((c) => (
-                <li key={c} className="flex gap-3 text-sm leading-relaxed text-navy/75">
-                  <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-gob-red" />
-                  {c}
+          <div className="mt-8 rounded-2xl bg-white p-9 ring-1 ring-navy/8 md:p-11">
+            <h3 className="text-xl font-bold">{VERIFICA_ANTES.titulo}</h3>
+            <ul className="mt-7 grid gap-4 md:grid-cols-2 md:gap-x-12">
+              {VERIFICA_ANTES.items.map((v) => (
+                <li key={v} className="flex gap-3.5 leading-relaxed text-navy/75">
+                  <Check
+                    size={18}
+                    strokeWidth={3}
+                    aria-hidden
+                    className="mt-1 shrink-0 text-verde"
+                  />
+                  {v}
                 </li>
               ))}
             </ul>
+
+            <a
+              href={CONVOCATORIA.urlBases}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group -mx-2 mt-9 inline-flex items-center gap-2 rounded px-2 py-2 font-semibold text-azul hover:underline"
+            >
+              {VERIFICA_ANTES.enlaceTexto}
+              <ArrowRight size={17} className="transition group-hover:translate-x-1" />
+            </a>
           </div>
         </Reveal>
       </div>

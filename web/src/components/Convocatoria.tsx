@@ -1,5 +1,5 @@
-import { ArrowRight, Check, FileText, Mail, AlertTriangle } from "lucide-react";
-import { CONVOCATORIA, REGLAS_DINERO, FINANCIABLE, PERFILES_DESEABLES } from "@/lib/contenido";
+import { Check, Mail } from "lucide-react";
+import { CONVOCATORIA, REGLAS_DINERO, FINANCIABLE } from "@/lib/contenido";
 import { Reveal } from "./Reveal";
 
 export function Convocatoria() {
@@ -39,107 +39,27 @@ export function Convocatoria() {
           ))}
         </div>
 
-        {/* Cómo se postula, sin mandar a nadie a un Drive */}
+        {/* En qué se puede gastar el capital semilla.
+
+            Aquí había además una tarjeta azul, «Cómo se postula», y debajo un
+            bloque de perfiles deseables. Los dos salieron el 2026-08-27 a
+            petición de Estefy: los tres pasos de postular están ahora en la
+            franja de cierre, al final de la página, y el recorrido completo del
+            programa en la sección «El proceso». */}
         <Reveal>
-          {/* Izquierda: en qué se puede gastar. Derecha: cómo se pide.
-              La tarjeta de «Además de los requisitos» se retiró de aquí; su
-              contenido sigue en CONDICIONES, en contenido.ts. */}
-          <div className="mt-8 grid items-start gap-6 md:grid-cols-2">
-            <div className="rounded-2xl bg-white p-9 ring-1 ring-navy/8">
-              <h3 className="flex items-center gap-2.5 text-xl font-bold">
-                <Check size={20} strokeWidth={3} className="text-verde" />
-                Qué puedes financiar
-              </h3>
-              <ul className="mt-6 space-y-3">
-                {FINANCIABLE.map((f) => (
-                  <li key={f} className="flex gap-3 text-sm leading-relaxed text-navy/75">
-                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-verde" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="rounded-2xl bg-navy p-9 text-white">
-              <h3 className="text-xl font-bold">Cómo se postula</h3>
-              <ol className="mt-6 space-y-4 text-white/75">
-                <li className="flex gap-3.5">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold">
-                    1
-                  </span>
-                  <span className="leading-relaxed">
-                    Llena el <strong className="font-semibold text-white">formulario de postulación</strong> en línea.
-                  </span>
-                </li>
-                <li className="flex gap-3.5">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold">
-                    2
-                  </span>
-                  <span className="leading-relaxed">
-                    Reúne los documentos de la lista de abajo en una carpeta digital —Drive,
-                    OneDrive— <strong className="font-semibold text-white">con acceso público</strong>.
-                  </span>
-                </li>
-                <li className="flex gap-3.5">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-bold">
-                    3
-                  </span>
-                  <span className="leading-relaxed">
-                    Envía el enlace de esa carpeta a{" "}
-                    <a
-                      href={`mailto:${CONVOCATORIA.correoPostulacion}`}
-                      className="break-all font-semibold text-verde-claro underline underline-offset-4"
-                    >
-                      {CONVOCATORIA.correoPostulacion}
-                    </a>
-                    .
-                  </span>
-                </li>
-              </ol>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={CONVOCATORIA.urlFormulario}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-verde px-7 py-3.5 font-semibold transition hover:bg-verde/85"
-                >
-                  Abrir el formulario
-                  <ArrowRight size={17} className="transition group-hover:translate-x-1" />
-                </a>
-                <a
-                  href={CONVOCATORIA.urlBases}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 rounded-full border border-white/25 px-7 py-3.5 font-semibold transition hover:bg-white/10"
-                >
-                  <FileText size={17} />
-                  Bases completas (PDF)
-                </a>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Perfiles deseables */}
-        <Reveal>
-          <div className="mt-8 rounded-2xl bg-gris p-9">
-            <h3 className="text-lg font-bold">Se valora especialmente que en tu cadena de valor participen</h3>
-            <ul className="mt-5 flex flex-wrap gap-2.5">
-              {PERFILES_DESEABLES.map((p) => (
-                <li
-                  key={p}
-                  className="rounded-full border border-navy/12 bg-white px-4 py-2 text-sm text-navy/80"
-                >
-                  {p}
+          <div className="mt-8 rounded-2xl bg-white p-9 ring-1 ring-navy/8">
+            <h3 className="flex items-center gap-2.5 text-xl font-bold">
+              <Check size={20} strokeWidth={3} className="text-verde" />
+              Qué puedes financiar
+            </h3>
+            <ul className="mt-6 grid gap-3 md:grid-cols-2 md:gap-x-10">
+              {FINANCIABLE.map((f) => (
+                <li key={f} className="flex gap-3 text-sm leading-relaxed text-navy/75">
+                  <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-verde" />
+                  {f}
                 </li>
               ))}
             </ul>
-            <p className="mt-5 flex items-start gap-2.5 text-sm text-navy/55">
-              <AlertTriangle size={16} className="mt-0.5 shrink-0" />
-              Los beneficiarios directos e indirectos de una cadena de valor no pueden participar
-              en más de una solicitud de cofinanciamiento.
-            </p>
           </div>
         </Reveal>
 

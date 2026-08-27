@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // `vercel build` deja aquí la salida compilada y minificada. Sin esto el
+    // lint la analiza y devuelve ~1900 problemas que no son del proyecto.
+    ".vercel/**",
   ]),
 ]);
 

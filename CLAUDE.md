@@ -336,3 +336,55 @@ kill -9 $(ss -lptn 'sport = :3000' | grep -o 'pid=[0-9]*' | cut -d= -f2 | sort -
 
 ▸ Es pariente de la Trampa 3 —`.next` rancio— pero peor, porque ahí el síntoma es una imagen
 vieja y aquí es la página entera sin CSS, que se parece muchísimo a un bug de maquetación real.
+
+---
+
+## Añadido el 2026-08-27 — la tanda de textos de Estefy y dos secciones nuevas
+
+Estefy entregó por WhatsApp la revisión de media página. Todo lo de esta sección es texto suyo,
+`oficial`, y está en `contenido.ts` como manda la Regla 1.
+
+**Qué cambió de sitio.** La tarjeta azul «Cómo se postula» vivía dentro de la sección de la
+convocatoria y mezclaba dos cosas: el trámite de postular y el recorrido del programa. Se partió
+en dos:
+
+| Antes | Ahora |
+|---|---|
+| Tarjeta azul «Cómo se postula», dentro de la convocatoria | `Proceso.tsx` — las siete etapas, sección propia tras la convocatoria |
+| Sus tres pasos y sus dos botones | `Cierre.tsx` — la franja final, lo último que se lee |
+| Bloque «Se valora especialmente…» (perfiles deseables) | **borrado**, a petición suya |
+| Tarjeta roja «Qué te deja fuera», con siete causales | **borrada**; la cierra `VERIFICA_ANTES`, una lista en positivo, y un enlace a las bases |
+
+▲ **Se borró contenido oficial de las bases** —`PERFILES_DESEABLES` (§ 4.1.1) y
+`CAUSALES_RECHAZO` (§ 3.6)—. No se perdió: sigue en el PDF de las bases, que es la fuente, y en
+`git log`. Si alguien lo echa de menos, está en el commit anterior a este.
+
+**Los borradores bajaron de 20 a 4.** Los nombres y el contenido de los tres niveles pasaron de
+`borrador` a `oficial`; siguen en borrador solo la duración, el número de módulos y la URL de
+destino de cada nivel, y los dos videos de `RECURSOS`, que aún no tienen URL.
+
+### Trampa 6 — las clases de rejilla van en `<Reveal>`, no en el hijo
+
+`<Reveal>` envuelve a sus hijos en un `<div>` propio. Cuando un `<Reveal>` es hijo directo de un
+`grid`, **el elemento de la rejilla es ese div**, así que un `lg:col-span-2` puesto en el hijo no
+hace nada: se aplica a un elemento que ya no está en el contexto de rejilla. Se ve como una
+tarjeta que no se ensancha y una fila que no cierra.
+
+`Reveal` acepta `className` justamente para esto. Va ahí, junto con el `h-full` si las tarjetas
+deben igualar altura:
+
+```tsx
+<Reveal className={`h-full ${ultima ? "lg:col-span-2" : ""}`}>
+  <li className="flex h-full flex-col …">
+```
+
+▸ **Para retratar una sección con Puppeteer, emula «menos movimiento».** Una captura normal sale
+en blanco: `<Reveal>` esconde lo que no ha entrado en pantalla, y forzar el scroll a mano es una
+carrera perdida contra el observador de intersección. Con
+`page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }])` la página se
+sirve entera y visible —es la garantía que `pnpm probar` verifica—. La cabecera es `fixed` y se
+cuela en la captura de una sección: se oculta con un `addStyleTag` de usar y tirar.
+
+▲ **Los scripts que importen `puppeteer-core` tienen que vivir en `web/scripts/`.** El
+`node_modules` estricto de pnpm no alcanza a un fichero suelto en `/tmp`: falla con
+`ERR_MODULE_NOT_FOUND`. Es la misma razón por la que los dos arneses se mudaron ahí.
