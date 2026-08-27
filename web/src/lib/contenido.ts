@@ -507,12 +507,11 @@ export const CREDITOS_FOTOS = [
   },
   {
     archivo: "paso-capacitacion.jpg",
-    titulo: "Feria del Café y Cacao, Guayaquil",
-    autor: "Cancillería Ecuador",
+    titulo: "Banana Processing",
+    autor: "David Brossard",
     licencia: "CC BY-SA 2.0",
     licenciaUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
-    fuente:
-      "https://commons.wikimedia.org/wiki/File:Aromas_del_Ecuador,_Feria_del_Caf%C3%A9_y_Cacao_Guayaquil_2012_(8007573454).jpg",
+    fuente: "https://commons.wikimedia.org/wiki/File:Banana_Processing.jpg",
   },
   {
     archivo: "paso-plan.jpg",

@@ -5,25 +5,16 @@ import { useState } from "react";
 import { PROVINCIAS, TERRITORIO } from "@/lib/contenido";
 
 /**
- * Las siete provincias, en pila de fotos.
+ * Las siete provincias, en pila de fotos que se recorre pulsándola.
  *
- * Se pidió a partir de un componente que arrastra las tarjetas con
- * `framer-motion`. No se usó, por dos motivos:
+ * Cada tarjeta lleva encima su provincia y su región, así que la lista de los
+ * siete nombres que había debajo repetía la misma información y dejaba un
+ * hueco; se quitó.
  *
- *   · `framer-motion` se quitó de este proyecto a propósito (Trampa 4): una
- *     caída del JS con él dejó la página en blanco. Volver a meterlo por un
- *     efecto decorativo no compensa.
- *   · Ahí la única forma de ver las demás fotos es arrastrar. En una página de
- *     gobierno, la lista de provincias donde opera el programa es información,
- *     no adorno: no puede depender de un gesto que no todo el mundo descubre,
- *     ni desaparecer si el JS no llega.
- *
- * Así que la pila es un adorno que se mueve solo con CSS, y debajo van los
- * siete nombres como botones. Sin JS se leen igual, se navegan con el teclado,
- * y quien quiera jugar con las fotos puede pulsarlas.
+ * La pila se mueve solo con CSS. No usa `framer-motion` a propósito: se quitó
+ * de este proyecto porque una caída del JS con él dejó la página en blanco
+ * (Trampa 4), y no compensa reintroducirlo por un efecto decorativo.
  */
-const REGIONES = ["Costa", "Sierra", "Amazonía"] as const;
-
 export function Territorio() {
   const [activa, setActiva] = useState(0);
   const n = PROVINCIAS.length;
@@ -82,33 +73,12 @@ export function Territorio() {
         })}
       </div>
 
-      <div className="mt-10 grid gap-7 sm:grid-cols-3">
-        {REGIONES.map((region) => (
-          <div key={region}>
-            <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-verde-claro">
-              {region}
-            </h3>
-            <ul className="mt-3 space-y-1">
-              {PROVINCIAS.map((p, i) =>
-                p.region !== region ? null : (
-                  <li key={p.nombre}>
-                    <button
-                      type="button"
-                      onClick={() => setActiva(i)}
-                      aria-current={i === activa}
-                      className={`text-left text-sm leading-snug transition ${
-                        i === activa ? "font-semibold text-white" : "text-white/60 hover:text-white"
-                      }`}
-                    >
-                      {p.nombre}
-                    </button>
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
-        ))}
-      </div>
+      {/* La provincia y su región van sobre la propia foto: repetirlas debajo
+          en una lista era decir dos veces lo mismo y dejar un hueco. Se pasa de
+          foto pulsando la tarjeta. */}
+      <p className="mt-6 text-center text-sm text-white/45">
+        Pulsa la foto para recorrer las siete provincias
+      </p>
     </div>
   );
 }

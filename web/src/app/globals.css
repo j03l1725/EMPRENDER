@@ -9,6 +9,9 @@
   --color-verde: #1c6d0e;
   --color-verde-claro: #d9f2cb;
   --color-gris: #f5f7f9;
+  /* Gris de verdad, no un blanco roto: separa la sección de los pasos del
+     blanco de la de arriba sin llegar al azul del pie. */
+  --color-plomo: #dbe1e8;
 
   /* Acentos del Gobierno del Ecuador — heredados de fomento-digital */
   --color-gob-blue: #0255ba;
