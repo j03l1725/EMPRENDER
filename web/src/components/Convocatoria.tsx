@@ -71,7 +71,7 @@ export function Convocatoria() {
                     Envía el enlace de esa carpeta a{" "}
                     <a
                       href={`mailto:${CONVOCATORIA.correoPostulacion}`}
-                      className="font-semibold text-verde-claro underline underline-offset-4"
+                      className="break-all font-semibold text-verde-claro underline underline-offset-4"
                     >
                       {CONVOCATORIA.correoPostulacion}
                     </a>
@@ -144,7 +144,7 @@ export function Convocatoria() {
             ¿Problemas con algún enlace? Escribe a{" "}
             <a
               href={`mailto:${CONVOCATORIA.correoPostulacion}`}
-              className="font-semibold text-verde underline underline-offset-4"
+              className="break-all font-semibold text-verde underline underline-offset-4"
             >
               {CONVOCATORIA.correoPostulacion}
             </a>

@@ -9,8 +9,10 @@
     "start": "next start",
     "lint": "eslint",
     "auditar": "node scripts/auditar-responsive.mjs",
+    "probar": "node scripts/probar-reveal.mjs",
     "mapa": "node scripts/generar-mapa-ecuador.mjs",
-    "verificar": "pnpm lint && pnpm build"
+    "verificar": "pnpm lint && pnpm build",
+    "verificar-todo": "node scripts/verificar-todo.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
