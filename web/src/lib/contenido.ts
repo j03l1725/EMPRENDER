@@ -465,6 +465,7 @@ export const FORMACION_CABECERA = {
 export const NIVELES = [
   {
     n: 1,
+    foto: "/img/nivel-1.jpg",
     nombre: "Fundamentos del agronegocio",
     detalle:
       "Comprende cómo funciona un agronegocio, cómo se organiza una unidad productiva y qué demanda el mercado.",
@@ -474,6 +475,7 @@ export const NIVELES = [
   },
   {
     n: 2,
+    foto: "/img/nivel-2.jpg",
     nombre: "Gestión y formalización",
     detalle:
       "Fortalece conocimientos en costos, precios, calidad, asociatividad y requisitos para acceder a nuevos mercados.",
@@ -483,6 +485,7 @@ export const NIVELES = [
   },
   {
     n: 3,
+    foto: "/img/nivel-3.jpg",
     nombre: "Plan de Mejora de Agronegocios",
     detalle:
       "Aprende a estructurar tu PMA, sustentar las inversiones y definir los resultados que quieres alcanzar.",
@@ -709,5 +712,29 @@ export const CREDITOS_FOTOS = [
     licenciaUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
     fuente:
       "https://commons.wikimedia.org/wiki/File:Ama_la_Vida_-_Flickr_-_R%C3%ADo_Jatunyacu-_Napo_(8227375372).jpg",
+  },
+  {
+    archivo: "nivel-1.jpg",
+    titulo: "Culture de bananes",
+    autor: "Philippe Lavoie",
+    licencia: "Dominio público",
+    licenciaUrl: "https://commons.wikimedia.org/wiki/Template:PD-self",
+    fuente: "https://commons.wikimedia.org/wiki/File:Culture_de_bananes.JPG",
+  },
+  {
+    archivo: "nivel-2.jpg",
+    titulo: "Mercado de ganado, Otavalo",
+    autor: "Bernard Gagnon",
+    licencia: "CC BY-SA 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    fuente: "https://commons.wikimedia.org/wiki/File:Livestock_market,_Otavalo_02.jpg",
+  },
+  {
+    archivo: "nivel-3.jpg",
+    titulo: "Plantación de rosas, Ecuador",
+    autor: "Myskoxen",
+    licencia: "CC0",
+    licenciaUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+    fuente: "https://commons.wikimedia.org/wiki/File:Rose_plantation_ecuador.jpg",
   },
 ] as const;

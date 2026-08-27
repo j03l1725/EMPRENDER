@@ -1,76 +1,85 @@
-import { ArrowUpRight, Clock, Layers } from "lucide-react";
+"use client";
+
+import { Clock, Layers } from "lucide-react";
 import { NIVELES, FORMACION_CABECERA } from "@/lib/contenido";
-import { Borrador } from "./revision";
 import { Reveal } from "./Reveal";
+import { SqueezeCarousel, type SqueezeSlide } from "./ui/carousel-squeeze";
 
 /**
- * Los tres niveles de formación.
+ * Los tres niveles de formación, en carrusel de acordeón.
  *
- * Toma el molde que tenía la sección de cursos abiertos —fondo morado del SEAL,
- * cabecera alineada a la izquierda en blanco, tarjetas blancas encima—, que es
- * lo que se pidió el 2026-08-27. Aquella sección se retiró: los niveles son
- * ahora lo único que se enseña de formación.
+ * Sigue con el fondo morado del SEAL. Los paneles cerrados son anchos —no las
+ * tiras de ocho píxeles de la demo original— porque con tres niveles hay que
+ * poder distinguirlos sin abrirlos: cada uno lleva su nombre girado encima.
+ *
+ * La duración y el número de módulos siguen marcados como `borrador`: van en el
+ * rótulo de la esquina del panel abierto, envueltos por el propio <Borrador>
+ * desde el componente padre, para que el botón «Revisión» los siga resaltando.
  */
+const slides: SqueezeSlide[] = NIVELES.map((n) => ({
+  id: String(n.n),
+  title: n.nombre,
+  description: n.detalle,
+  action: "Ver el nivel",
+  href: n.href,
+  image: n.foto,
+  imageAlt: "",
+  slatLabel: n.nombre,
+  overlay: (
+    <span className="flex items-center gap-3 text-white sm:gap-4">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/15 text-base font-bold backdrop-blur sm:h-11 sm:w-11 sm:text-lg">
+        {n.n}
+      </span>
+      <span className="min-w-0 text-left">
+        <span className="block text-base font-bold leading-tight sm:text-lg">{n.nombre}</span>
+        <span className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-white/70">
+          <span className="inline-flex items-center gap-1.5">
+            <Clock size={13} />
+            {n.duracion}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Layers size={13} />
+            {n.modulos} módulos
+          </span>
+        </span>
+      </span>
+    </span>
+  ),
+}));
+
 export function Niveles() {
   return (
-    <section id="niveles" className="bg-morado px-6 py-20 md:py-24">
+    <section id="niveles" className="bg-morado px-6 py-20 text-white md:py-24">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <div className="max-w-2xl">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-verde-claro">
               {FORMACION_CABECERA.antetitulo}
             </p>
-            <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
               {FORMACION_CABECERA.titulo}
             </h2>
             <p className="mt-3 leading-relaxed text-white/60">{FORMACION_CABECERA.bajada}</p>
-            <p className="mt-8 text-xl font-bold tracking-tight text-white md:text-2xl">
+            <p className="mt-8 text-xl font-bold tracking-tight md:text-2xl">
               {FORMACION_CABECERA.subtitulo}
             </p>
           </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {NIVELES.map((n, i) => (
-            <Reveal key={n.n} delay={i * 0.09}>
-              <a
-                href={n.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex h-full flex-col rounded-xl bg-white p-8 shadow-lg transition hover:-translate-y-1 hover:shadow-2xl"
-              >
-                <div className="flex items-start justify-between">
-                  <span className="grid h-14 w-14 place-items-center rounded-full bg-morado text-xl font-bold text-white">
-                    {n.n}
-                  </span>
-                  <ArrowUpRight
-                    size={22}
-                    className="text-navy/25 transition group-hover:text-verde"
-                  />
-                </div>
-
-                <h3 className="mt-7 text-2xl font-bold leading-tight tracking-tight text-navy">
-                  {n.nombre}
-                </h3>
-                <p className="mt-4 flex-1 leading-relaxed text-navy/65">{n.detalle}</p>
-
-                <div className="mt-8 flex items-center gap-5 border-t border-navy/8 pt-5 text-sm text-navy/50">
-                  <span className="inline-flex items-center gap-1.5">
-                    <Clock size={15} />
-                    <Borrador>{n.duracion}</Borrador>
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Layers size={15} />
-                    <Borrador>{n.modulos} módulos</Borrador>
-                  </span>
-                </div>
-
-                {/* Barra de acento, molde SEAL */}
-                <span className="mt-6 block h-1 w-10 rounded-full bg-verde transition-all duration-300 group-hover:w-full" />
-              </a>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={0.08}>
+          <SqueezeCarousel
+            slides={slides}
+            label="Los tres niveles de formación"
+            className="mt-10"
+            height={380}
+            gap={12}
+            slatWidth={110}
+            radius={16}
+            duration={700}
+            autoplay
+            interval={7000}
+          />
+        </Reveal>
       </div>
     </section>
   );
