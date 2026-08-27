@@ -14,19 +14,18 @@
 export const PROGRAMA = {
   nombre: "EMPRENDER",
   nombreLargo:
-    "Fortalecimiento de las capacidades de las Unidades Productivas Rurales en el Territorio Focalizado",
-  ejecutor: "Ministerio de Producción, Comercio Exterior e Inversiones",
-  ejecutorSiglas: "MPCEI",
+    "Fortalecimiento de las capacidades de las Unidades Productivas Rurales en el Territorio",
+  ejecutor: "Ministerio de Desarrollo Económico y Productivo",
   correo: "pemprender@produccion.gob.ec",
   correoQuejas: "quejasyreclamos@produccion.gob.ec",
   fichaOficial:
     "https://www.produccion.gob.ec/proyecto-fortalecimiento-de-las-capacidades-de-las-unidades-productivas-rurales-en-el-territorio-focalizado-emprender/",
 } as const;
 
-/** borrador — bajada del hero. La escribe Estefy. */
+/** oficial — bajada del hero. Texto entregado por Estefy el 2026-08-27. */
 export const HERO_BAJADA =
-  "Capital semilla, acompañamiento técnico y formación para que las unidades productivas " +
-  "rurales del territorio focalizado den el salto a la agroindustria.";
+  "Impulsa el crecimiento y la competitividad del sector agroindustrial, fortaleciendo " +
+  "las capacidades de las unidades productivas rurales y acompañándolas en la mejora de sus negocios.";
 
 /**
  * oficial — bases § 3.3. Coordenadas proyectadas sobre la silueta del país

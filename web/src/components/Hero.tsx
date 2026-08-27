@@ -1,6 +1,5 @@
 import { ArrowRight, Play } from "lucide-react";
 import { PROGRAMA, HERO_BAJADA, CONVOCATORIA } from "@/lib/contenido";
-import { Borrador } from "./revision";
 import { MapaEcuador } from "./MapaEcuador";
 
 export function Hero() {
@@ -60,7 +59,7 @@ export function Hero() {
             className="entrada mt-7 max-w-xl text-lg leading-relaxed text-white/70"
             style={{ animationDelay: "0.2s" }}
           >
-            <Borrador nota="Bajada del hero — la escribe Estefy">{HERO_BAJADA}</Borrador>
+            {HERO_BAJADA}
           </p>
 
           <div
@@ -68,7 +67,9 @@ export function Hero() {
             style={{ animationDelay: "0.28s" }}
           >
             <a
-              href="#convocatoria"
+              href={CONVOCATORIA.urlFormulario}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2.5 rounded-full bg-verde px-8 py-4 font-semibold shadow-[0_10px_40px_-12px_rgba(28,109,14,1)] transition hover:bg-verde/85"
             >
               Postular al capital semilla

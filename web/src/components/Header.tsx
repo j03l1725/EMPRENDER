@@ -49,8 +49,8 @@ export function Header() {
           <Tricolor />
           <span className="leading-none">
             <span className="block text-lg font-extrabold tracking-tight">EMPRENDER</span>
-            <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-white/55">
-              {PROGRAMA.ejecutorSiglas}
+            <span className="block max-w-[15rem] text-[10px] font-medium uppercase leading-tight tracking-[0.12em] text-white/55">
+              {PROGRAMA.ejecutor}
             </span>
           </span>
         </a>
