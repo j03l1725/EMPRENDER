@@ -6,15 +6,21 @@ import { MapaEcuador } from "./MapaEcuador";
 export function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-navy pt-[72px] text-white">
-      {/* Resplandores — decorativos, se pueden perder sin consecuencia */}
-      <div className="latir pointer-events-none absolute -left-[15%] -top-[20%] h-[60rem] w-[60rem] rounded-full bg-verde/25 blur-[160px]" />
+      {/*
+        Los resplandores eran tres divs de 960 px con `blur-[160px]` y animados con
+        `scale`. En un móvil eso obliga a la GPU a rasterizar tres capas enormes
+        desenfocadas en cada fotograma, y es la causa más probable de que la página
+        tardara en aparecer en un teléfono. Aquí son degradados radiales pintados
+        directamente en el fondo: mismo aspecto, sin filtro y sin animación.
+      */}
       <div
-        className="latir pointer-events-none absolute -bottom-[30%] -right-[10%] h-[55rem] w-[55rem] rounded-full bg-morado/50 blur-[160px]"
-        style={{ animationDelay: "-6s", animationDuration: "20s" }}
-      />
-      <div
-        className="latir pointer-events-none absolute right-[26%] top-[16%] h-[32rem] w-[32rem] rounded-full bg-azul/30 blur-[140px]"
-        style={{ animationDelay: "-11s", animationDuration: "24s" }}
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(60rem 48rem at 6% -8%, rgba(28,109,14,.40), transparent 62%)," +
+            "radial-gradient(56rem 46rem at 104% 108%, rgba(63,55,123,.62), transparent 62%)," +
+            "radial-gradient(34rem 30rem at 76% 20%, rgba(0,94,184,.32), transparent 66%)",
+        }}
       />
 
       <div

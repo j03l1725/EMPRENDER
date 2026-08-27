@@ -70,15 +70,17 @@ body {
 }
 .flotar { animation: flotar 7s ease-in-out infinite; }
 
-@keyframes latir {
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50%      { opacity: 0.8;  transform: scale(1.12); }
-}
-.latir { animation: latir 16s ease-in-out infinite; }
+
 
 /* Latido de los marcadores del mapa */
 @keyframes pulso {
-  0%, 100% { r: 4.5; opacity: 0.14; }
-  50%      { r: 7;   opacity: 0.03; }
+  0%, 100% { transform: scale(1);   opacity: 0.14; }
+  50%      { transform: scale(1.6); opacity: 0.03; }
 }
-.pulso { animation: pulso 3.5s ease-in-out infinite; }
+/* `transform-box: fill-box` hace que la escala gire sobre el centro del círculo y no
+   sobre el origen del SVG. Animar `transform` compone; animar el atributo `r` repinta. */
+.pulso {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulso 3.5s ease-in-out infinite;
+}

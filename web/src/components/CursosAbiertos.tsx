@@ -75,7 +75,8 @@ export function CursosAbiertos() {
                 alt=""
                 fill
                 className="object-cover transition duration-500 group-hover:scale-105"
-                sizes="22rem"
+                quality={62}
+                sizes="(max-width: 640px) 19rem, 22rem"
               />
               {"nuevo" in c && c.nuevo && (
                 <span className="absolute right-3 top-3 rounded bg-verde-claro px-2.5 py-1 text-xs font-bold text-verde">

@@ -45,7 +45,8 @@ export function Programa() {
                   alt="Productor trabajando la tierra"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  quality={62}
+                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 60vw, 46vw"
                 />
               </div>
               <div className="relative -mt-6 ml-0 max-w-[16rem] rounded-xl bg-navy p-6 text-white shadow-2xl sm:absolute sm:-bottom-6 sm:-left-6 sm:mt-0">

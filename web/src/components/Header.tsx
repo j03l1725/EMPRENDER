@@ -41,7 +41,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        compacto ? "bg-navy/95 shadow-lg backdrop-blur" : "bg-transparent"
+        compacto ? "bg-navy shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-[72px] max-w-7xl items-center gap-6 px-6">
