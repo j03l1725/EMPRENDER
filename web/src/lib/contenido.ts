@@ -245,7 +245,13 @@ export const PROCESO_NOTA =
   "La capacitación, asistencia técnica y formulación del PMA y PGSAC son etapas previas " +
   "habilitantes para acceder al cofinanciamiento del Fondo EMPRENDER.";
 
-/** oficial — bases § 3.13, resumido a las fases que le importan al postulante */
+/**
+ * oficial — bases § 3.13, resumido a las fases que le importan al postulante.
+ *
+ * ▲ Al 2026-08-27 esto NO se pinta: la sección que lo mostraba repetía el
+ * recorrido que ya cuenta PROCESO, y se retiró. Se conserva porque lleva los
+ * plazos en días hábiles, que PROCESO no da.
+ */
 export const CRONOGRAMA = [
   {
     n: 1,

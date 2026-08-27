@@ -6,7 +6,7 @@ import { Pasos } from "@/components/Pasos";
 import { Beneficiarios } from "@/components/Beneficiarios";
 import { Convocatoria } from "@/components/Convocatoria";
 import { Requisitos } from "@/components/Requisitos";
-import { Cronograma } from "@/components/Cronograma";
+import { Proceso } from "@/components/Proceso";
 import { Niveles } from "@/components/Niveles";
 import { Recursos } from "@/components/Recursos";
 import { Cierre } from "@/components/Cierre";
@@ -35,8 +35,8 @@ export default function Home() {
         <Pasos />
         <Beneficiarios />
         <Convocatoria />
+        <Proceso />
         <Requisitos />
-        <Cronograma />
         <Niveles />
         <Cierre />
         <Recursos />
