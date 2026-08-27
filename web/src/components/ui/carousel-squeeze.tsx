@@ -101,7 +101,10 @@ export function SqueezeCarousel({
   const tira = !ancho
     ? slatWidth
     : compacto
-      ? Math.min(slatWidth, 34)
+      ? // 44 px es el objetivo de toque mínimo recomendado. Este sitio se ve
+        // sobre todo en móviles de zona rural, así que la tira cerrada tiene
+        // que poder pulsarse con el dedo, no solo verse.
+        Math.min(slatWidth, 44)
       : Math.min(slatWidth, (ancho * 0.45) / Math.max(n - 1, 1));
 
   const mover = (dir: -1 | 1) => setActiva((a) => (a + dir + n) % n);

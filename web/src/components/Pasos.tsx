@@ -119,16 +119,23 @@ export function Pasos() {
         </div>
 
         <div className="mt-8 flex justify-center gap-2.5">
+          {/* El punto se ve de 8 px, pero el botón mide 24 de alto: un objetivo
+              de toque de 8 px es imposible de acertar con el dedo. El relleno
+              es transparente, así que no cambia nada visualmente. */}
           {PASOS.map((p, i) => (
             <button
               key={p.titulo}
               onClick={() => setActiva(i)}
               aria-label={`Ir al paso ${i + 1}: ${p.titulo}`}
               aria-current={i === activa}
-              className={`h-2 rounded-full transition-all ${
-                i === activa ? "w-8 bg-verde" : "w-2 bg-navy/25 hover:bg-navy/40"
-              }`}
-            />
+              className="group -my-2 px-1 py-2"
+            >
+              <span
+                className={`block h-2 rounded-full transition-all ${
+                  i === activa ? "w-8 bg-verde" : "w-2 bg-navy/25 group-hover:bg-navy/40"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>
