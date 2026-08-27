@@ -1,4 +1,4 @@
-import { PROGRAMA } from "@/lib/contenido";
+import { PROGRAMA, CREDITOS_FOTOS } from "@/lib/contenido";
 
 const ENLACES = [
   { href: "#programa", texto: "El programa" },
@@ -38,7 +38,37 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-white/15 pt-8 text-center text-sm text-white/55">
+        {/* Atribución de las fotos. CC BY y CC BY-SA la exigen; va aquí, visible. */}
+        <div className="mt-14 border-t border-white/15 pt-8">
+          <p className="text-center text-xs uppercase tracking-[0.14em] text-white/35">
+            Créditos fotográficos
+          </p>
+          <ul className="mt-3 flex flex-wrap justify-center gap-x-6 gap-y-1.5 text-xs text-white/45">
+            {CREDITOS_FOTOS.map((c) => (
+              <li key={c.archivo}>
+                <a
+                  href={c.fuente}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white/75 hover:underline"
+                >
+                  {c.titulo}
+                </a>{" "}
+                · {c.autor} ·{" "}
+                <a
+                  href={c.licenciaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white/75 hover:underline"
+                >
+                  {c.licencia}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-10 border-t border-white/15 pt-8 text-center text-sm text-white/55">
           <p className="mx-auto max-w-2xl leading-relaxed">
             {PROGRAMA.nombreLargo}
           </p>

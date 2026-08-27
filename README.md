@@ -62,8 +62,10 @@ docs/
 arranca en `opacity: 0` y si el JS falla o tarda, la página queda en blanco — pasó en la
 primera versión. Ahora el HTML trae el texto y el CSS lo anima. `framer-motion` ya no se usa.
 
-**Las fotos son provisionales.** Están recortadas de las capturas del SEAL del 2026-08-26 para
-que la maqueta no se vea vacía. Hay que reemplazarlas por material propio antes de publicar.
+**Las fotos son de Wikimedia Commons con licencia de uso comercial**, y dos de ellas exigen
+atribución con *compartir igual*. Por eso los créditos van visibles en el pie de la página: si
+alguien borra ese bloque, la página deja de cumplir la licencia. Detalle y salida limpia en
+`docs/referencias/creditos-fotos.md`.
 
 **El SEAL no se toca.** Es un Moodle del MAG y no hay permiso para modificarlo. Se replica su
 lenguaje visual; no se edita su código.
@@ -77,5 +79,10 @@ las capitales provinciales, proyectadas con la misma transformación que el cont
 
 ## Despliegue
 
-Todavía no. Va a Vercel por CLI con el token de **otra cuenta**, no la de Joel, y ese token
-aún no llega.
+```bash
+cd web && vercel --prod
+```
+
+La sesión de Vercel está iniciada en la máquina de Joel (`vercel login`, no hay token guardado
+en el repositorio). El root directory del proyecto es `web/`: si Vercel apunta a la raíz de
+`EMPRENDER`, el build falla.

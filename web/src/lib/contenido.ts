@@ -412,3 +412,49 @@ export const RECURSOS = [
     detalle: "Unidades productivas que ya pasaron por el programa.",
   },
 ];
+
+/**
+ * Créditos fotográficos.
+ *
+ * Todas las fotos son de Wikimedia Commons con licencia que permite uso comercial.
+ * CC BY y CC BY-SA **exigen atribución**: por eso aparece en el pie de la página, no
+ * solo en un fichero. Detalle completo en docs/referencias/creditos-fotos.md
+ *
+ * ▲ Son fotos de relleno. Cuando el Ministerio entregue material propio, se cambian
+ *   estas cuatro y este bloque desaparece.
+ */
+export const CREDITOS_FOTOS = [
+  {
+    archivo: "curso-cacao.jpg",
+    titulo: "Cacao Tree (Theobroma cacao) green pods",
+    autor: "Bernard DUPONT",
+    licencia: "CC BY-SA 2.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+    fuente:
+      "https://commons.wikimedia.org/wiki/File:Cacao_Tree_(Theobroma_cacao)_green_pods_(17348751253).jpg",
+  },
+  {
+    archivo: "curso-banano.jpg",
+    titulo: "Banana plantation, Ecuador",
+    autor: "Dave Lonsdale",
+    licencia: "CC BY 2.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by/2.0/",
+    fuente: "https://commons.wikimedia.org/wiki/File:Banana_plantation,_Ecuador.jpg",
+  },
+  {
+    archivo: "curso-arroz.jpg",
+    titulo: "Harvesting paddy",
+    autor: "Zaheed Sarwer Khan",
+    licencia: "CC BY 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by/4.0/",
+    fuente: "https://commons.wikimedia.org/wiki/File:Harvesting_paddy.jpg",
+  },
+  {
+    archivo: "campo.jpg",
+    titulo: "Ecuadorian farmers",
+    autor: "Kiwa Natural Life",
+    licencia: "CC BY-SA 4.0",
+    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    fuente: "https://commons.wikimedia.org/wiki/File:Ecuadorian_farmers.jpg",
+  },
+] as const;
