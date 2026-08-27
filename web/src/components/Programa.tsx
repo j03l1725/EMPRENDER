@@ -1,0 +1,81 @@
+import Image from "next/image";
+import { Check, Leaf, ShieldCheck } from "lucide-react";
+import { QUE_ES, OBJETIVOS, ENFOQUES } from "@/lib/contenido";
+import { Borrador } from "./revision";
+import { Reveal } from "./Reveal";
+
+export function Programa() {
+  return (
+    <section id="programa" className="relative px-6 py-28 md:py-36">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-verde">
+              El programa
+            </p>
+            <h2 className="text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.05] tracking-tight">
+              Fortalecer lo que ya produce el territorio
+            </h2>
+            <div className="mt-7 space-y-5 text-lg leading-relaxed text-navy/70">
+              {QUE_ES.map((p, i) => (
+                <p key={i}>
+                  <Borrador nota="Descripción del programa — la escribe Estefy">{p}</Borrador>
+                </p>
+              ))}
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              {ENFOQUES.map((e, i) => (
+                <span
+                  key={e}
+                  className="inline-flex items-center gap-2 rounded-full bg-verde-claro px-4 py-2 text-sm font-semibold text-verde"
+                >
+                  {i === 0 ? <Leaf size={15} /> : <ShieldCheck size={15} />}
+                  {e}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="relative">
+              <div className="relative aspect-square overflow-hidden rounded-2xl">
+                <Image
+                  src="/img/campo.jpg"
+                  alt="Productor trabajando la tierra"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 max-w-[16rem] rounded-xl bg-navy p-6 text-white shadow-2xl">
+                <p className="text-3xl font-bold tracking-tight">PMA</p>
+                <p className="mt-1.5 text-sm leading-snug text-white/70">
+                  Cada unidad seleccionada construye su Plan de Mejora de Agronegocios
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Objetivos específicos — textuales de la ficha oficial */}
+        <Reveal>
+          <div className="mt-28 rounded-2xl bg-gris p-10 md:p-14">
+            <h3 className="text-2xl font-bold tracking-tight">Qué hace el proyecto</h3>
+            <p className="mt-2 text-navy/55">Objetivos específicos declarados por el MPCEI.</p>
+            <ul className="mt-10 grid gap-x-12 gap-y-6 md:grid-cols-2">
+              {OBJETIVOS.map((o) => (
+                <li key={o} className="flex gap-3.5">
+                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-verde/10 text-verde">
+                    <Check size={14} strokeWidth={3} />
+                  </span>
+                  <span className="leading-relaxed text-navy/80">{o}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

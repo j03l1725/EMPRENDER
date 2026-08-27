@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Tokens del SEAL — medidos sobre las capturas, no estimados.
+/* Tokens del SEAL — medidos sobre las capturas con Pillow, no estimados a ojo.
    Ver ../../docs/referencias/paleta.md */
 @theme {
   --color-navy: #041336;
@@ -18,21 +18,50 @@
   --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 body {
   background: #ffffff;
   color: var(--color-navy);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Placeholder de contenido que Estefy todavía no ha entregado.
-   Tiene que verse. Si deja de verse, alguien lo dio por texto real. */
-.falta {
-  background: repeating-linear-gradient(
-    45deg, #fff4d6, #fff4d6 10px, #ffe9ad 10px, #ffe9ad 20px
-  );
-  border: 1px dashed #b58900;
-  color: #7a5c00;
-  padding: 0.15rem 0.45rem;
-  border-radius: 0.25rem;
-  font-size: 0.85em;
-  font-weight: 600;
+::selection {
+  background: var(--color-verde-claro);
+  color: var(--color-verde);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Entrada del hero — en CSS a propósito, no en JS.
+   Si el JS falla o tarda, el texto igual aparece. Con framer-motion el
+   `initial: opacity 0` deja la página en blanco cuando algo se rompe. */
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+.entrada {
+  animation: entrada 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+.flotar { animation: flotar 7s ease-in-out infinite; }
+
+@keyframes latir {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.8;  transform: scale(1.12); }
+}
+.latir { animation: latir 16s ease-in-out infinite; }

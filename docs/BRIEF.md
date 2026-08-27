@@ -106,7 +106,8 @@ directo: React 19 + Tailwind v4, que es lo que esos componentes esperan.
 | Framework | **Next.js 16 + React 19 + TypeScript + Tailwind v4** en `web/` | Es a donde apunta el despliegue (Vercel) y aguanta que después «se pongan más cosas». Los componentes de 21st.dev son React + Tailwind, entran sin traducción |
 | Despliegue | **Vercel por CLI**, con **token de otra cuenta** — no la de Joel | Lo dijo Joel. El token llega después; hasta entonces **todo local** |
 | Idioma | Español, `lang="es"` | Público rural ecuatoriano |
-| Contenido | **Placeholders marcados** hasta que Estefy mande los textos | Ella dijo que los textos los da ella. Inventarlos aquí sería fabricar contenido institucional |
+| Contenido | **Borrador nuestro, marcado y separado de lo oficial** | Joel necesita algo presentable para la reunión del 2026-08-27. Todo el texto vive en `web/src/lib/contenido.ts`, cada bloque dice si es `oficial` o `borrador`, y el botón «Revisión» resalta los borradores en pantalla |
+| Animación | **CSS, no JavaScript**, para lo que afecta a la legibilidad | Con `framer-motion` el texto arranca invisible y una caída del JS deja la página en blanco. Pasó en la primera versión. `framer-motion` se quitó |
 
 ▲ Economía Digital es **Vite**, no Next. Se toma de ahí el diseño y los componentes, no la
 configuración. Si se prefiere paridad exacta de stack con ese proyecto, se cambia ahora que no
@@ -128,4 +129,23 @@ hay nada escrito — cuesta poco hoy y mucho en dos semanas.
 7. **El dominio.** ¿Subdominio del SEAL, dominio propio, o `.vercel.app` mientras tanto?
 8. **El botón dentro del SEAL.** ¿Sigue en pie? ¿Llegó el acceso al gestor?
 
-▸ Nada de esto bloquea maquetar. Se construye con placeholders visibles y se reemplaza.
+▸ Nada de esto bloquea maquetar. Está todo escrito en borrador y marcado; se reemplaza en
+`web/src/lib/contenido.ts` sin tocar componentes.
+
+---
+
+## 7. La reunión del 2026-08-27 en el Mintel
+
+Joel lleva la laptop y enseña esto. **Va a grabar la conversación, con consentimiento**, porque
+la anterior fue por llamada, no se grabó y se perdió casi todo lo acordado — que es el motivo
+por el que existe este fichero.
+
+Lo que conviene tener abierto en la reunión:
+
+1. La página en `localhost:3000`, con el botón **«Revisión»** encendido para ir señalando qué
+   es borrador y qué es oficial.
+2. `web/src/lib/contenido.ts`, para corregir textos en vivo y ver el resultado al instante.
+3. La lista de ocho preguntas de § 6.
+
+▸ Cuando llegue el audio de esa reunión, se transcribe igual que los dos primeros y se archiva
+en `docs/transcripciones/`. El procedimiento está en el `README`.
