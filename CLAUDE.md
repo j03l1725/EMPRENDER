@@ -10,12 +10,27 @@ productivas agroindustriales de siete provincias.
 
 ## Si acabas de abrir este repositorio, lee esto y nada más
 
-1. **Este fichero, entero.** Son unas 200 líneas y dice cómo se trabaja aquí.
-2. **`docs/BRIEF.md`** — qué encargaron, qué está confirmado, qué es invención nuestra y las
+1. **La última sección de este fichero**, «la última tanda, y el estado con el que te
+   encuentras». Va al final porque es lo más reciente, pero **es lo primero que hay que leer en
+   una máquina nueva**: dice cómo quedó la página, qué contenido ya no se pinta y qué salió mal.
+2. **Este fichero, entero.** Son unas 500 líneas y dice cómo se trabaja aquí.
+3. **`docs/BRIEF.md`** — qué encargaron, qué está confirmado, qué es invención nuestra y las
    diez preguntas abiertas. 140 líneas.
 
 Con eso basta para empezar. El resto de `docs/` se consulta cuando haga falta, no se lee de
 entrada. `git log` cuenta la historia si necesitas el porqué de algo.
+
+▲▲ **Antes de desplegar nada, lee «Desplegar».** `vercel --prod` a secas no funciona aquí y
+falla en silencio; hay un rodeo documentado. Dos sesiones distintas perdieron horas por esto.
+
+▸ **En una máquina nueva, de cero:**
+
+```bash
+git clone https://github.com/j03l1725/EMPRENDER.git && cd EMPRENDER/web
+pnpm install          # pnpm, no npm — ver «Por qué pnpm»
+pnpm verificar-todo   # lint, build, arnés responsive y garantías de <Reveal>
+pnpm dev              # http://localhost:3000
+```
 
 ▲ **Quien trabaja aquí es Joel Morales, contratista externo.** La contraparte que consigue
 textos y decisiones es **Estefy Pérez**, que trabaja con él. Los textos institucionales los da
@@ -120,15 +135,52 @@ recargar solo. No hace falta tocar ningún componente.
 
 ### Desplegar
 
-```bash
-cd web && vercel --prod
+▲▲ **`cd web && vercel --prod` NO funciona en este proyecto.** Devuelve un despliegue en estado
+`BLOCKED` y la CLI no lo dice claro: se queda esperando en silencio. Lee lo de abajo antes de
+intentarlo, o perderás la tarde. Le pasó a dos sesiones distintas el 2026-08-27; una encadenó
+cinco intentos fallidos en una hora sin enterarse de por qué.
+
+**El motivo.** Vercel exige que el autor del commit sea miembro del equipo. La cuenta es
+`lepr9190@gmail.com` y los commits van firmados por `joelusa25@gmail.com`, que no lo es. La API
+lo dice, la CLI no:
+
+```
+readyStateReason: Git author joelusa25@gmail.com must have access to the team
+seatBlock: { blockCode: "TEAM_ACCESS_REQUIRED" }
 ```
 
-Proyecto `lepr9190-9627s-projects/emprender`. **El root directory es `web/`**, no la raíz del
-repositorio: si Vercel apunta a la raíz, el build falla.
+**La solución de verdad**, y son dos minutos: en `vercel.com` → equipo → *Members*, añadir
+`joelusa25@gmail.com`. Mientras eso no se haga, hay que usar el rodeo.
+
+**El rodeo:** desplegar desde una copia del código **sin repositorio git encima**. Sin `.git`
+no hay autor de commit que comprobar, y pasa. Es un modo normal de la CLI, no un truco:
+
+```bash
+TMP=$(mktemp -d)
+cd web
+tar --exclude=node_modules --exclude=.next --exclude=.vercel --exclude=.env.local -cf - . \
+  | (cd "$TMP" && tar xf -)
+mkdir -p "$TMP/.vercel" && cp .vercel/project.json "$TMP/.vercel/"
+cd "$TMP" && vercel --prod --yes
+```
+
+▸ **Comprobar siempre que el dominio apunta al despliegue nuevo.** Que el despliegue salga
+`READY` no basta:
+
+```bash
+TOKEN=$(python3 -c "import json;print(json.load(open('$HOME/.local/share/com.vercel.cli/auth.json'))['token'])")
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://api.vercel.com/v4/aliases?projectId=prj_KbRzFgnn7x9yIjKFJV32Lu46eY0N&teamId=team_y46w6i8vDVqszBtVpH0EYxDE"
+```
+
+Proyecto `lepr9190-9627s-projects/emprender`. **El root directory del proyecto es `.`**, que con
+despliegues desde CLI hechos desde `web/` es correcto. ▲ Si algún día se conecta el repositorio
+de GitHub para que despliegue solo en cada push, **hay que cambiarlo a `web`**: apuntando a la
+raíz del repositorio el build falla.
 
 ▲ En una máquina nueva hace falta `vercel login` y `vercel link --yes --project emprender`
-desde `web/`. **No hay ningún token guardado en el repositorio** y no debe haberlo.
+desde `web/`. **No hay ningún token guardado en el repositorio** y no debe haberlo. `vercel link`
+crea `web/.env.local` con un `VERCEL_OIDC_TOKEN`; está en `.gitignore`, y ahí tiene que quedarse.
 
 ### Verificar antes de dar algo por bueno
 
@@ -388,3 +440,112 @@ cuela en la captura de una sección: se oculta con un `addStyleTag` de usar y ti
 ▲ **Los scripts que importen `puppeteer-core` tienen que vivir en `web/scripts/`.** El
 `node_modules` estricto de pnpm no alcanza a un fichero suelto en `/tmp`: falla con
 `ERR_MODULE_NOT_FOUND`. Es la misma razón por la que los dos arneses se mudaron ahí.
+
+---
+
+## Añadido el 2026-08-27 (tarde) — la última tanda, y el estado con el que te encuentras
+
+Esta sección es la que hay que leer si abres el repositorio en otra máquina. Cuenta qué quedó
+montado y, sobre todo, **qué salió mal**, que es lo que no se deduce mirando el código.
+
+### El repositorio pasó a público y está subido
+
+Los once commits de la jornada están en `github.com/j03l1725/EMPRENDER`. Antes de subir se
+revisó el historial completo buscando tokens, claves y ficheros `.env`: no hay ninguno.
+`web/.env.local` y `web/.vercel/` están en `.gitignore` y ahí siguen.
+
+▸ Queda un correo personal a la vista, en el `User-Agent` de
+`docs/referencias/buscar-fotos-commons.py`. No es un descuido: la API de Wikimedia **exige** un
+contacto en la cabecera. Si molesta en un repositorio público, se cambia por uno de proyecto.
+
+### Cómo quedó la página, de arriba abajo
+
+```
+Hero · Programa · Pasos · Beneficiarios · Convocatoria
+Proceso · Requisitos · Niveles · Cierre · Recursos · Pie
+```
+
+| Sección | Qué es |
+|---|---|
+| `Pasos` | Los cuatro pasos, en carrusel de portada con fondo `--color-plomo` |
+| `Beneficiarios` | «Presente en 7 provincias» + dos perfiles + pila de fotos de provincia |
+| `Proceso` | «Tu camino en EMPRENDER», siete etapas |
+| `Niveles` | Formación, con el molde morado que tenían los cursos |
+| `Cierre` | «¿Listo dar el siguiente paso?», la franja final |
+| `Recursos` | Lo último antes del pie |
+
+### Contenido que ya no se pinta pero sigue en `contenido.ts`
+
+Nada de esto se borró, y todo lleva un aviso en el propio fichero. Es texto **oficial** de las
+bases o del SEAL, y volcarlo costó trabajo:
+
+| Constante | Por qué salió |
+|---|---|
+| `CONDICIONES` | Su tarjeta «Además de los requisitos» se retiró de la convocatoria |
+| `CURSOS`, `CURSOS_CABECERA` | La sección de cursos abiertos se retiró; de formación quedan los niveles |
+| `CRONOGRAMA` | Repetía el recorrido que cuenta `PROCESO`. **Lleva los plazos en días hábiles, que `PROCESO` no da** |
+
+### Trampa 7 — dos sesiones a la vez sobre el mismo repositorio
+
+Pasó, y produce un síntoma que despista del todo: **la página de producción y el `localhost` no
+enseñan lo mismo**, porque el servidor de desarrollo recarga los ficheros del disco y esos los
+está cambiando otra sesión.
+
+Si algo «desaparece» y no fuiste tú:
+
+```bash
+git status --short          # ficheros tocados que no recuerdas
+git log --oneline -3        # ¿tu último commit sigue siendo el último?
+```
+
+▲▲ **Antes de borrar un fichero que `git status` marca como `??`, commitéalo o cópialo.** Un
+fichero sin rastrear que se borra **no se puede revertir**: no está en ningún sitio. Se perdió
+así `Proceso.tsx`, creado por la otra sesión y borrado por esta.
+
+### Cómo se recuperó `Proceso.tsx`, por si vuelve a hacer falta
+
+Se reconstruyó desde el JavaScript compilado que quedaba en `.next/dev`. **El build de
+desarrollo conserva la estructura JSX legible**: nombres de clase, orden de los elementos e
+incluso los comentarios del código original.
+
+```bash
+grep -rl "components/Proceso" .next
+python3 -c "…"   # buscar 'function Proceso(' y limpiar los nombres de turbopack
+```
+
+Los datos nunca se perdieron: vivían en `contenido.ts`, que sí estaba commiteado. **Es otro
+argumento para la Regla 1**: con el texto separado del componente, perder un componente cuesta
+una tarde; perder el texto costaría volver a transcribir el PDF.
+
+▸ El fichero reconstruido lleva un aviso en su cabecera. Si algún detalle no cuadra con el
+original, viene de ahí.
+
+### Dos equivocaciones de esta jornada, para no repetirlas
+
+**Se borró la sección que había que conservar.** Se pidió quitar la que se veía en una captura
+con el antetítulo «El proceso»; había *dos* secciones que empezaban así —`Proceso` y
+`Cronograma`— y se borró la que no era sin comprobar cuál pintaba esa pantalla.
+▸ **Antes de borrar una sección por una captura, confirma qué componente la pinta**, buscando en
+`src/` una frase literal de la imagen.
+
+**Se documentó como bug algo que no lo era.** Ver la Trampa 5. Un servidor huérfano servía la
+página sin CSS y se llegó a escribir en este fichero una regresión inexistente de la Trampa 1.
+▸ **Antes de dar por bueno un fallo de maquetación, comprueba que el CSS carga.**
+
+### Los créditos de foto están plegados, no borrados
+
+Se pidió ocultarlos por espacio. Van en un `<details>` de una línea en el pie. **No se borraron
+a propósito:** dos de las licencias son CC BY-SA, todas exigen atribución, y la página responde
+`200` a cualquiera con el enlace aunque lleve `noindex`. Plegados cumplen la Regla 4 —el texto
+está en el HTML y a un clic—; borrados, no.
+
+### Lo siguiente
+
+- **El bloqueo de despliegue**, arriba del todo en «Desplegar». Añadir `joelusa25@gmail.com` al
+  equipo de Vercel y el rodeo del `tar` deja de hacer falta.
+- **Fotos propias del Ministerio.** Las once de Wikimedia son un puente. Cuando lleguen, se
+  cambian, se borra `CREDITOS_FOTOS` y el bloque del pie desaparece solo.
+- **El `noindex` sigue puesto** (Regla 3) y debe seguir hasta que el Ministerio apruebe el
+  contenido.
+- **Quedan cuatro fragmentos en `borrador`**: duración, módulos y URL de cada nivel, y los dos
+  videos de `RECURSOS`, que aún no tienen URL. El botón «Revisión» los resalta.
