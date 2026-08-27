@@ -41,14 +41,16 @@ export const PROVINCIAS = [
   { nombre: "Napo", region: "Amazonía", x: 55.13, y: 42.87 },
 ] as const;
 
-/** borrador — el párrafo de «qué es». Lo escribe Estefy. */
+/** oficial — el párrafo de «qué es». Texto entregado por Estefy el 2026-08-27. */
 export const QUE_ES = [
-  "EMPRENDER es un proyecto del Ministerio de Producción, Comercio Exterior e Inversiones " +
-    "que fortalece las capacidades de las unidades productivas rurales del territorio focalizado " +
-    "para que desarrollen agronegocios sostenibles.",
-  "No es solo dinero. Cada unidad productiva seleccionada se capacita, construye su Plan de " +
-    "Mejora de Agronegocios con acompañamiento técnico, y recién entonces accede al capital " +
-    "semilla para ejecutarlo.",
+  "EMPRENDER impulsa a las unidades productivas rurales para que sus negocios crezcan, " +
+    "mejoren y generen nuevas oportunidades.",
+  "A través de capacitación y acompañamiento técnico especializado, cada unidad productiva " +
+    "seleccionada construye su Plan de Mejora de Agronegocios (PMA), identificando qué " +
+    "necesita fortalecer y cómo llevarlo a la práctica.",
+  "Y damos un paso más: las unidades productivas que cumplen el proceso pueden acceder a " +
+    "capital semilla para implementar su Plan de Mejora y convertirlo en resultados concretos.",
+  "Más capacidades. Mejores negocios. Más oportunidades para el territorio.",
 ];
 
 /** oficial — los seis objetivos específicos, textuales de la ficha del MPCEI */
@@ -61,10 +63,21 @@ export const OBJETIVOS = [
   "Mejorar capacidades de fortalecimiento empresarial en actores territoriales",
 ] as const;
 
-/** oficial — enfoques declarados en la ficha y en las bases § 3.4 */
+/**
+ * oficial — la tarjeta azul sobre la foto del programa. Estefy, 2026-08-27.
+ * Estaba escrita a pelo dentro de Programa.tsx; se trae aquí, que es donde
+ * dice la Regla 1 que vive el texto.
+ */
+export const TARJETA_PMA = {
+  titulo: "Tu plan para crecer",
+  texto: "Identifica qué mejorar en tu agronegocio y construye una ruta clara para hacerlo.",
+} as const;
+
+/** oficial — enfoques entregados por Estefy el 2026-08-27 */
 export const ENFOQUES = [
-  "Género e inclusión social y rural",
-  "Gestión de riesgos sociales, climáticos y ambientales",
+  "Género, inclusión y diversidad social",
+  "Participación y oportunidades para jóvenes",
+  "Fortalecimiento y desarrollo empresarial",
 ] as const;
 
 /** oficial — bases § 1 (Definiciones) y § 3.3 */

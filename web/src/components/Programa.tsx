@@ -1,8 +1,10 @@
 import Image from "next/image";
-import { Check, Leaf, ShieldCheck } from "lucide-react";
-import { QUE_ES, OBJETIVOS, ENFOQUES } from "@/lib/contenido";
-import { Borrador } from "./revision";
+import { Check, Users, Sprout, TrendingUp } from "lucide-react";
+import { QUE_ES, OBJETIVOS, ENFOQUES, TARJETA_PMA } from "@/lib/contenido";
 import { Reveal } from "./Reveal";
+
+/** Un icono por enfoque, en el mismo orden que ENFOQUES. */
+const ICONOS_ENFOQUE = [Users, Sprout, TrendingUp];
 
 export function Programa() {
   return (
@@ -18,22 +20,23 @@ export function Programa() {
             </h2>
             <div className="mt-7 space-y-5 text-lg leading-relaxed text-navy/70">
               {QUE_ES.map((p, i) => (
-                <p key={i}>
-                  <Borrador nota="Descripción del programa — la escribe Estefy">{p}</Borrador>
-                </p>
+                <p key={i}>{p}</p>
               ))}
             </div>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              {ENFOQUES.map((e, i) => (
-                <span
-                  key={e}
-                  className="inline-flex items-center gap-2 rounded-full bg-verde-claro px-4 py-2 text-sm font-semibold text-verde"
-                >
-                  {i === 0 ? <Leaf size={15} /> : <ShieldCheck size={15} />}
-                  {e}
-                </span>
-              ))}
+              {ENFOQUES.map((e, i) => {
+                const Icono = ICONOS_ENFOQUE[i] ?? Check;
+                return (
+                  <span
+                    key={e}
+                    className="inline-flex items-center gap-2 rounded-full bg-verde-claro px-4 py-2 text-sm font-semibold text-verde"
+                  >
+                    <Icono size={15} className="shrink-0" />
+                    {e}
+                  </span>
+                );
+              })}
             </div>
           </Reveal>
 
@@ -50,10 +53,10 @@ export function Programa() {
                 />
               </div>
               <div className="relative -mt-6 ml-0 max-w-[16rem] rounded-xl bg-navy p-6 text-white shadow-2xl sm:absolute sm:-bottom-6 sm:-left-6 sm:mt-0">
-                <p className="text-3xl font-bold tracking-tight">PMA</p>
-                <p className="mt-1.5 text-sm leading-snug text-white/70">
-                  Cada unidad seleccionada construye su Plan de Mejora de Agronegocios
+                <p className="text-2xl font-bold uppercase leading-[1.1] tracking-tight">
+                  {TARJETA_PMA.titulo}
                 </p>
+                <p className="mt-2 text-sm leading-snug text-white/70">{TARJETA_PMA.texto}</p>
               </div>
             </div>
           </Reveal>
@@ -63,7 +66,6 @@ export function Programa() {
         <Reveal>
           <div className="mt-28 rounded-2xl bg-gris p-10 md:p-14">
             <h3 className="text-2xl font-bold tracking-tight">Qué hace el proyecto</h3>
-            <p className="mt-2 text-navy/55">Objetivos específicos declarados por el MPCEI.</p>
             <ul className="mt-10 grid gap-x-12 gap-y-6 md:grid-cols-2">
               {OBJETIVOS.map((o) => (
                 <li key={o} className="flex gap-3.5">
