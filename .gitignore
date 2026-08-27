@@ -5,3 +5,6 @@ out/
 .env*.local
 *.log
 .vercel
+
+# Salida de `pnpm mapa`: se copia a mano al componente y se tira
+web/ec-*.txt

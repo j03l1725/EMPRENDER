@@ -1,7 +1,7 @@
 # La silueta del Ecuador del hero
 
 **No está dibujada a mano ni copiada de una imagen.** Se generó con
-`generar-mapa-ecuador.mjs`, que está en esta carpeta.
+`generar-mapa-ecuador.mjs`, que vive en `web/scripts/`.
 
 ## Cómo se hizo
 
@@ -35,9 +35,11 @@ misma transformación que el contorno. Por eso caen donde deben:
 ▸ **Si hay que regenerarlo** —otra simplificación, otro encuadre, añadir provincias—:
 
 ```bash
-npm install world-atlas topojson-client
-node generar-mapa-ecuador.mjs
+cd web && pnpm mapa
 ```
+
+`world-atlas` y `topojson-client` ya están en las `devDependencies`; no hay que instalar nada
+aparte.
 
 Imprime tres versiones (epsilon 0,02 / 0,035 / 0,05) y las coordenadas de los marcadores.
 El componente que lo consume es `web/src/components/MapaEcuador.tsx`.
@@ -71,5 +73,5 @@ elemento no afecta al diseño de fuera, y la ventana vuelve a 375. Se probaron t
 de las tarjetas.
 
 ▸ **Si algún día se añade otro elemento con desplazamiento horizontal**, lleva `contain: layout`
-o reaparece el mismo fallo. La prueba está en `docs/referencias/auditar-responsive.mjs`: lo que
+o reaparece el mismo fallo. La prueba está en `web/scripts/auditar-responsive.mjs` (`pnpm auditar`): lo que
 hay que vigilar no es `scrollX`, es que `window.innerWidth` coincida con el ancho de la pantalla.
