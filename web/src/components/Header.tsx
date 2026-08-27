@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { PROGRAMA } from "@/lib/contenido";
+import { PROGRAMA, CONVOCATORIA } from "@/lib/contenido";
 
 const ENLACES = [
   { href: "#programa", texto: "El programa" },
@@ -69,7 +69,9 @@ export function Header() {
         </nav>
 
         <a
-          href="#convocatoria"
+          href={CONVOCATORIA.urlFormulario}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden rounded-full bg-verde px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-verde/85 lg:inline-block"
         >
           Postular
@@ -97,7 +99,9 @@ export function Header() {
             </a>
           ))}
           <a
-            href="#convocatoria"
+            href={CONVOCATORIA.urlFormulario}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setAbierto(false)}
             className="mt-3 block rounded-full bg-verde px-6 py-3 text-center font-semibold text-white"
           >

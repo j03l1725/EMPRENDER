@@ -580,6 +580,13 @@ export const RECURSOS = [
  * ▲ Son fotos de relleno. Cuando el Ministerio entregue material propio, se cambian
  *   estas cuatro y este bloque desaparece.
  */
+/**
+ * ▲ `prov-santo-domingo.jpg` NO figura aquí: la entregó Joel el 2026-08-27 y no
+ * se conoce ni su autor ni su licencia. Se retiró el crédito que tenía porque
+ * era el de la foto de Wikimedia a la que sustituyó, y dejarlo habría sido
+ * atribuir esta imagen a alguien que no la hizo. Cuando se sepa la fuente, se
+ * añade aquí; si resulta que no es de uso libre, hay que cambiarla.
+ */
 export const CREDITOS_FOTOS = [
   {
     archivo: "curso-cacao.jpg",
@@ -666,15 +673,6 @@ export const CREDITOS_FOTOS = [
     licenciaUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
     fuente:
       "https://commons.wikimedia.org/wiki/File:Canoa,_Manab%C3%AD,_Ecuador_north.JPG",
-  },
-  {
-    archivo: "prov-santo-domingo.jpg",
-    titulo: "Downtown El Carmen",
-    autor: "1MadGod",
-    licencia: "CC BY-SA 4.0",
-    licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    fuente:
-      "https://commons.wikimedia.org/wiki/File:Downtown_El_Carmen.jpg",
   },
   {
     archivo: "prov-carchi.jpg",
