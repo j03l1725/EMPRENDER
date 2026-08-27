@@ -38,8 +38,10 @@ climáticos y ambientales.
 **Primera convocatoria** — cerró el 2025-11-09. Bases en PDF:
 <https://www.produccion.gob.ec/wp-content/uploads/2025/10/1ERA_Convocatoria_Proyecto_EMPRENDER_MPCEI.pdf>
 
-▲ **La convocatoria de 2026 no está publicada todavía**, o no la encontramos. La landing la
-necesita. Está como pregunta 2 en `../BRIEF.md` § 6.
+▸ **Resuelto el 2026-08-26.** Las bases de la convocatoria vigente están en el repositorio:
+`web/public/documentos/bases-convocatoria-emprender-2026.pdf`, 41 páginas. **Abierta del
+15/06/2026 al 31/12/2026.** Ese PDF es la fuente de todo lo que la landing afirma sobre la
+convocatoria; esta ficha web es solo el resumen institucional y se queda corta.
 
 ---
 

@@ -34,13 +34,16 @@ Fuente: [ficha oficial del MPCEI](https://www.produccion.gob.ec/proyecto-fortale
 - **Qué financia:** Planes de Mejora de Agronegocios (PMA), aceleración empresarial y
   acompañamiento técnico.
 - **Contacto:** `pemprender@produccion.gob.ec`
-- **Vigencia:** hasta 2027, con convocatorias sucesivas. La primera cerró el 2025-11-09
-  ([nota](https://www.produccion.gob.ec/primera-convocatoria-a-fondos-de-capital-semilla-del-proyecto-emprender/)),
-  y la ficha anuncia convocatoria durante 2026.
+- **Vigencia:** hasta 2027, con convocatorias sucesivas.
 
-▲ **La convocatoria que la landing debe enlazar todavía no está identificada.** La que hay
-publicada es la primera, ya cerrada. Sin las bases de la de 2026 la sección de convocatoria se
-maqueta con datos de ejemplo y se rellena cuando Estefy los mande.
+▸ **La convocatoria está abierta: del 15/06/2026 al 31/12/2026.** Joel consiguió las bases el
+2026-08-26 —41 páginas— y están en `web/public/documentos/bases-convocatoria-emprender-2026.pdf`.
+De ahí sale todo lo que la landing dice de dinero, requisitos, plazos y causales de rechazo, y
+está volcado en `web/src/lib/contenido.ts` marcado como `oficial`.
+
+▲ Ojo con una confusión fácil: la nota de prensa de `produccion.gob.ec` que habla de un cierre
+el 2025-11-09 corresponde a una convocatoria anterior. **La vigente es la del PDF**, y ese PDF
+es la fuente, no la web.
 
 ---
 
@@ -118,8 +121,9 @@ hay nada escrito — cuesta poco hoy y mucho en dos semanas.
 ## 6. Lo que falta — preguntas para Estefy
 
 1. **Los textos.** Todos. Hero, «qué es el programa», descripción de cada nivel, recursos.
-2. **La convocatoria vigente.** ¿Cuál es la de 2026, cuándo abre y cierra, dónde están las
-   bases en PDF y a qué formulario se registra la gente?
+2. ~~**La convocatoria vigente.**~~ **Resuelta el 2026-08-26.** Abierta del 15/06/2026 al
+   31/12/2026; bases en PDF dentro del repositorio; formulario en `formshare.alliance.cgiar.org`.
+   Lo que queda por confirmar es si habrá otra convocatoria después y con qué fechas.
 3. **Los tres niveles.** ¿Cómo se llaman, qué contiene cada uno, y a qué URL exacta del SEAL
    entra cada uno? ¿Hay prerrequisito entre niveles?
 4. **Los logos a la derecha.** En el SEAL van a la izquierda. ¿Es a propósito o se refería a
@@ -128,6 +132,12 @@ hay nada escrito — cuesta poco hoy y mucho en dos semanas.
 6. **Los dos videos.** URL del reel de Instagram y del video propio.
 7. **El dominio.** ¿Subdominio del SEAL, dominio propio, o `.vercel.app` mientras tanto?
 8. **El botón dentro del SEAL.** ¿Sigue en pie? ¿Llegó el acceso al gestor?
+9. **Los tres niveles y los «3 procesos de capacitación» de las bases.** Las bases (§ 3.13,
+   fase 5) exigen «al menos 3 procesos de capacitación». Puede que los tres niveles que pidió
+   Estefy sean exactamente eso. Si lo son, los nombres salen de las bases y dejan de ser
+   borrador.
+10. **Las fotos.** Las cuatro actuales son de Wikimedia con licencia que obliga a atribuir.
+    ¿Tiene el Ministerio material propio? Ver `referencias/creditos-fotos.md`.
 
 ▸ Nada de esto bloquea maquetar. Está todo escrito en borrador y marcado; se reemplaza en
 `web/src/lib/contenido.ts` sin tocar componentes.

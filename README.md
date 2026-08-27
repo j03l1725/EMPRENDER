@@ -4,11 +4,27 @@ Landing page del programa **EMPRENDER** — «Fortalecimiento de las capacidades
 Productivas Rurales en el Territorio Focalizado», del Ministerio de Producción, Comercio
 Exterior e Inversiones del Ecuador.
 
-## Correr en local
+## Arrancar en una máquina nueva
 
 ```bash
-cd web && npm run dev      # http://localhost:3000
+git clone https://github.com/j03l1725/EMPRENDER.git
+cd EMPRENDER/web
+npm install
+npm run dev                # http://localhost:3000
 ```
+
+Para poder desplegar desde esa máquina, una vez:
+
+```bash
+vercel login
+vercel link --yes --project emprender     # desde web/, no desde la raíz
+```
+
+No hay ningún token en el repositorio y no debe haberlo. `vercel login` deja la sesión en el
+sistema, fuera del proyecto.
+
+▸ **Si abres el repositorio con Claude Code, `CLAUDE.md` se carga solo.** Ahí están las reglas
+del proyecto, las trampas conocidas y el orden de lectura. No hace falta explicárselo.
 
 ## Para editar el contenido con Estefy
 
