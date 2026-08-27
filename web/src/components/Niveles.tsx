@@ -12,9 +12,8 @@ import { SqueezeCarousel, type SqueezeSlide } from "./ui/carousel-squeeze";
  * tiras de ocho píxeles de la demo original— porque con tres niveles hay que
  * poder distinguirlos sin abrirlos: cada uno lleva su nombre girado encima.
  *
- * La duración y el número de módulos siguen marcados como `borrador`: van en el
- * rótulo de la esquina del panel abierto, envueltos por el propio <Borrador>
- * desde el componente padre, para que el botón «Revisión» los siga resaltando.
+ * La duración y el número de módulos siguen sin confirmar; van en el rótulo del
+ * panel abierto. El botón «Revisión» que los resaltaba se retiró el 2026-08-27.
  */
 const slides: SqueezeSlide[] = NIVELES.map((n) => ({
   id: String(n.n),

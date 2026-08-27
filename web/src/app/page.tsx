@@ -1,4 +1,3 @@
-import { RevisionProvider } from "@/components/revision";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Programa } from "@/components/Programa";
@@ -27,7 +26,7 @@ import { Footer } from "@/components/Footer";
  */
 export default function Home() {
   return (
-    <RevisionProvider>
+    <>
       <Header />
       <main>
         <Hero />
@@ -42,6 +41,6 @@ export default function Home() {
         <Recursos />
       </main>
       <Footer />
-    </RevisionProvider>
+    </>
   );
 }
